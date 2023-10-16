@@ -1,20 +1,14 @@
-
-package co.udea.ssmu.api.model;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package co.udea.ssmu.api.model.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
-import jakarta.persistence.Basic;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import jakarta.xml.bind.annotation.XmlRootElement;
-import jakarta.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -22,18 +16,7 @@ import jakarta.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "SSMU_USER")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "SsmuUser.findAll", query = "SELECT s FROM SsmuUser s"),
-    @NamedQuery(name = "SsmuUser.findByUserId", query = "SELECT s FROM SsmuUser s WHERE s.userId = :userId"),
-    @NamedQuery(name = "SsmuUser.findByFirstName", query = "SELECT s FROM SsmuUser s WHERE s.firstName = :firstName"),
-    @NamedQuery(name = "SsmuUser.findByLastName", query = "SELECT s FROM SsmuUser s WHERE s.lastName = :lastName"),
-    @NamedQuery(name = "SsmuUser.findByEmail", query = "SELECT s FROM SsmuUser s WHERE s.email = :email"),
-    @NamedQuery(name = "SsmuUser.findByPhone", query = "SELECT s FROM SsmuUser s WHERE s.phone = :phone"),
-    @NamedQuery(name = "SsmuUser.findByStateUser", query = "SELECT s FROM SsmuUser s WHERE s.stateUser = :stateUser"),
-    @NamedQuery(name = "SsmuUser.findByUserRole", query = "SELECT s FROM SsmuUser s WHERE s.userRole = :userRole")})
-public class SsmuUser implements Serializable {
-
+public class SsmuUserE implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -62,21 +45,14 @@ public class SsmuUser implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "USER_ROLE")
     private String userRole;
-    @OneToMany(mappedBy = "createdBy")
-    private Collection<Pqrs> pqrsCollection;
-    @OneToMany(mappedBy = "adminId")
-    private Collection<Pqrs> pqrsCollection1;
-    @OneToMany(mappedBy = "complainTo")
-    private Collection<Pqrs> pqrsCollection2;
-
-    public SsmuUser() {
+    public SsmuUserE() {
     }
 
-    public SsmuUser(Long userId) {
+    public SsmuUserE(Long userId) {
         this.userId = userId;
     }
 
-    public SsmuUser(Long userId, String userRole) {
+    public SsmuUserE(Long userId, String userRole) {
         this.userId = userId;
         this.userRole = userRole;
     }
@@ -137,32 +113,6 @@ public class SsmuUser implements Serializable {
         this.userRole = userRole;
     }
 
-    @XmlTransient
-    public Collection<Pqrs> getPqrsCollection() {
-        return pqrsCollection;
-    }
-
-    public void setPqrsCollection(Collection<Pqrs> pqrsCollection) {
-        this.pqrsCollection = pqrsCollection;
-    }
-
-    @XmlTransient
-    public Collection<Pqrs> getPqrsCollection1() {
-        return pqrsCollection1;
-    }
-
-    public void setPqrsCollection1(Collection<Pqrs> pqrsCollection1) {
-        this.pqrsCollection1 = pqrsCollection1;
-    }
-
-    @XmlTransient
-    public Collection<Pqrs> getPqrsCollection2() {
-        return pqrsCollection2;
-    }
-
-    public void setPqrsCollection2(Collection<Pqrs> pqrsCollection2) {
-        this.pqrsCollection2 = pqrsCollection2;
-    }
 
     @Override
     public int hashCode() {
@@ -174,10 +124,10 @@ public class SsmuUser implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SsmuUser)) {
+        if (!(object instanceof SsmuUserE)) {
             return false;
         }
-        SsmuUser other = (SsmuUser) object;
+        SsmuUserE other = (SsmuUserE) object;
         if ((this.userId == null && other.userId != null) || (this.userId != null && !this.userId.equals(other.userId))) {
             return false;
         }
@@ -186,7 +136,7 @@ public class SsmuUser implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.SsmuUser[ userId=" + userId + " ]";
+        return "co.udea.ssmu.api.model.entities.SsmuUserE[ userId=" + userId + " ]";
     }
     
 }
