@@ -19,10 +19,11 @@ public class PqrsMessageE implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "MESSAGE_ID")
+    @SequenceGenerator(name = "pqrs_message_id_seq", sequenceName = "pqrs_message_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pqrs_message_id_seq")
+    @Column(name = "message_id")
     private Long messageId;
+
     @Lob
     @Column(name = "MESSAGE")
     private String message;

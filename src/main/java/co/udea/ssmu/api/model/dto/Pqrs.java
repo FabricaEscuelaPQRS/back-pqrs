@@ -9,7 +9,7 @@ import java.util.Date;
 @Data
 public class Pqrs {
 
-    private Long Id;
+    private Long id = null;
     private PqrsTypes pqrsType;
     private Long createdBy;
     private Long complainTo;
@@ -18,7 +18,7 @@ public class Pqrs {
     private Date createdAt;
     private Approved approved;
     private String pqrsDescription;
-    private ComplainType complainType;
-    private GrievanceType grievanceType;
+    private ComplainType complainType = null;
+    private GrievanceType grievanceType = null;
 
 }

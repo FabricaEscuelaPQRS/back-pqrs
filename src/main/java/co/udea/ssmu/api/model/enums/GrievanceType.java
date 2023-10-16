@@ -5,13 +5,13 @@ public enum GrievanceType {
     ProblemasDeFacturacion("Problemas de Facturación"),
     Otros("Otros");
 
-    private String description;
+    public final String description;
 
     GrievanceType(String description) {
         this.description = description;
     }
 
-    public String description() {
+    String description() {
         return description;
     }
 

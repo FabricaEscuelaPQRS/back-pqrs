@@ -3,7 +3,7 @@ import lombok.Data;
 
 @Data
 public class Archive {
-    private Long Id;
-    private String urlA;
+    private Long id;
+    private String url;
     private Long messageId;
 }

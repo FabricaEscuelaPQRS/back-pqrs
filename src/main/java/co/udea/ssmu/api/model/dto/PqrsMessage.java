@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class PqrsMessage {
 
-    private Long Id;
+    private Long id;
     private String message;
     private Long pqrsId;
 }

@@ -9,12 +9,12 @@ public enum ComplainType {
     SituacionesAnomalasConPasajeros("Situaciones anómalas con pasajeros"),
     Otros("Otros");
 
-    private final String description;
+    public final String description;
 
-    private ComplainType(String description) {
+    ComplainType(String description) {
         this.description = description;
     }
-    private String description() {
+    String description() {
         return this.description;
     }
 

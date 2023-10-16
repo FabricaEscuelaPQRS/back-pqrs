@@ -19,9 +19,9 @@ public class ArchiveE implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ARCHIVE_ID")
+    @SequenceGenerator(name = "archive_a_id_seq", sequenceName = "archive_a_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "archive_a_id_seq")
+    @Column(name = "archive_id")
     private Long archiveId;
     @Size(max = 255)
     @Column(name = "URL_A")

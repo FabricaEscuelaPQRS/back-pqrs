@@ -20,9 +20,9 @@ public class SsmuUserE implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "USER_ID")
+    @SequenceGenerator(name = "user_id_seq", sequenceName = "ssmu_user_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
+    @Column(name = "user_id")
     private Long userId;
     @Size(max = 20)
     @Column(name = "FIRST_NAME")
