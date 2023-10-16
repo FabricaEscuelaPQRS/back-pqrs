@@ -1,6 +1,6 @@
-package co.udea.ssmu.api.model.repositories;
+package co.udea.ssmu.api.model.repository;
 
-import co.udea.ssmu.api.model.entities.PqrsMessageE;
+import co.udea.ssmu.api.model.entity.PqrsMessageE;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

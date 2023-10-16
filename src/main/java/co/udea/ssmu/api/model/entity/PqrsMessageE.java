@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package co.udea.ssmu.api.model.entities;
+package co.udea.ssmu.api.model.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+
 import jakarta.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -86,7 +86,7 @@ public class PqrsMessageE implements Serializable {
 
     @Override
     public String toString() {
-        return "co.udea.ssmu.api.model.entities.PqrsMessageE[ messageId=" + messageId + " ]";
+        return "co.udea.ssmu.api.model.entity.PqrsMessageE[ messageId=" + messageId + " ]";
     }
     
 }

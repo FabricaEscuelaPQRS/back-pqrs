@@ -1,12 +1,10 @@
-package co.udea.ssmu.api.model.repositories;
+package co.udea.ssmu.api.model.repository;
 
 
-import co.udea.ssmu.api.model.entities.ArchiveE;
-import co.udea.ssmu.api.model.entities.PqrsE;
+import co.udea.ssmu.api.model.entity.PqrsE;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @Repository

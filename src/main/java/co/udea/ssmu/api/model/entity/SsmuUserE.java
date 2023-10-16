@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package co.udea.ssmu.api.model.entities;
+package co.udea.ssmu.api.model.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
+
 import jakarta.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -39,7 +39,7 @@ public class SsmuUserE implements Serializable {
     @Column(name = "PHONE")
     private String phone;
     @Column(name = "STATE_USER")
-    private Short stateUser;
+    private Boolean stateUser;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
@@ -97,11 +97,11 @@ public class SsmuUserE implements Serializable {
         this.phone = phone;
     }
 
-    public Short getStateUser() {
+    public Boolean getStateUser() {
         return stateUser;
     }
 
-    public void setStateUser(Short stateUser) {
+    public void setStateUser(Boolean stateUser) {
         this.stateUser = stateUser;
     }
 
@@ -136,7 +136,7 @@ public class SsmuUserE implements Serializable {
 
     @Override
     public String toString() {
-        return "co.udea.ssmu.api.model.entities.SsmuUserE[ userId=" + userId + " ]";
+        return "co.udea.ssmu.api.model.entity.SsmuUserE[ userId=" + userId + " ]";
     }
     
 }
