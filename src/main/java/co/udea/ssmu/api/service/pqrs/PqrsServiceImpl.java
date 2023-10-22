@@ -1,7 +1,7 @@
 package co.udea.ssmu.api.service.pqrs;
 
 import co.udea.ssmu.api.model.dto.Pqrs;
-import co.udea.ssmu.api.model.entity.PqrsE;
+import co.udea.ssmu.api.model.entity.PqrsEntity;
 import co.udea.ssmu.api.model.mapper.PqrsMapper;
 import co.udea.ssmu.api.model.repository.PqrsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,11 @@ public class PqrsServiceImpl implements IPqrsService {
 
     @Override
     public Pqrs createPqrs(Pqrs pqrs) {
-        PqrsE pqrsE = pqrsMapper.toEntity(pqrs); // convertir el dto a entidad de base de datos
+        System.out.println(pqrs.toString());
+
+        PqrsEntity pqrsE = pqrsMapper.toEntity(pqrs); // convertir el dto a entidad de base de datos
+
+        System.out.println(pqrsE.getDescripcionPqrs());
 
         pqrsE = pqrsRepository.save(pqrsE); // guardar la entidad en la base de datos
 
@@ -31,13 +35,13 @@ public class PqrsServiceImpl implements IPqrsService {
 
     @Override
     public Pqrs deletePqrs(Integer id) {
-        Optional<PqrsE> pqrsEResult  = pqrsRepository.findByPqrsId(id);
+        Optional<PqrsEntity> pqrsEResult  = pqrsRepository.findById(id);
 
         if( ! pqrsEResult.isPresent() ) {
             return null;
         }
 
-        PqrsE pqrsE = pqrsEResult.get();
+        PqrsEntity pqrsE = pqrsEResult.get();
         pqrsRepository.delete(pqrsE);
 
         Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE); // convertir la entidad a dto
@@ -46,19 +50,19 @@ public class PqrsServiceImpl implements IPqrsService {
     }
 
     @Override
-    public Iterable<PqrsE> listPqrs() {
+    public Iterable<PqrsEntity> listPqrs() {
         return pqrsRepository.findAll();
     }
 
     @Override
     public Pqrs getPqrsById(Integer id) {
-        Optional<PqrsE> pqrsEResult  = pqrsRepository.findByPqrsId(id);
+        Optional<PqrsEntity> pqrsEResult  = pqrsRepository.findById(id);
 
         if( ! pqrsEResult.isPresent() ) {
             return null;
         }
 
-        PqrsE pqrsE = pqrsEResult.get();
+        PqrsEntity pqrsE = pqrsEResult.get();
         Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE); // convertir la entidad a dto
 
         return pqrsResponse;

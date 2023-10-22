@@ -2,9 +2,11 @@ package co.udea.ssmu.api.controller;
 
 
 import co.udea.ssmu.api.model.dto.Pqrs;
-import co.udea.ssmu.api.model.entity.PqrsE;
+import co.udea.ssmu.api.model.entity.Conductor;
+import co.udea.ssmu.api.model.entity.PqrsEntity;
 
-import co.udea.ssmu.api.model.mapper.PqrsMapper;
+import co.udea.ssmu.api.model.entity.PqrsMensajeEntity;
+import co.udea.ssmu.api.model.repository.ConductorRepository;
 import co.udea.ssmu.api.service.pqrs.IPqrsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -18,6 +20,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @Tag(name = "Pqrs", description = "Recursos de PQRS")
 
 @RestController
@@ -27,11 +31,13 @@ public class PqrsController {
     @Autowired
     IPqrsService pqrsService;
 
+    @Autowired
+    ConductorRepository conductorRepository;
 
 
     @GetMapping(path = "/index")
-    public String pqrs() {
-        return "this is a api for module pqrs";
+    public ArrayList<Conductor> pqrs() {
+        return conductorRepository.findAll();
     }
 
 
@@ -90,7 +96,7 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @GetMapping()
-    public ResponseEntity<Iterable<PqrsE>> listPqrs(){
+    public ResponseEntity<Iterable<PqrsEntity>> listPqrs(){
 
         return new ResponseEntity<>(pqrsService.listPqrs(),HttpStatus.OK);
     }

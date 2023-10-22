@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan({
         "co.udea.ssmu.api.controller",
         "co.udea.ssmu.api.model",
-        "co.udea.ssmu.api.service",
-        "co.udea.ssmu.api.utils",
+        "co.udea.ssmu.api.service"
+
 })
 
 public class SsmuApiApplication extends SpringBootServletInitializer {

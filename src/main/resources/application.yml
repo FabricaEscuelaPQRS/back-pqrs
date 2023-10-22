@@ -1,7 +1,7 @@
 # Configuración de la base de datos Oracle
 spring.datasource.url: jdbc:oracle:thin:@localhost:1521/xepdb1
-spring.datasource.username: jair
-spring.datasource.password: root
+spring.datasource.username: pepito
+spring.datasource.password: 1234
 spring.datasource.driver-class-name: oracle.jdbc.OracleDriver
 spring.jpa.show-sql: true
 
@@ -9,3 +9,7 @@ spring.jpa.show-sql: true
 server:
   port: 8080
 
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
