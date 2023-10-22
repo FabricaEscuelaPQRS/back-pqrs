@@ -1,9 +1,10 @@
 package co.udea.ssmu.api.service.archive;
 
-import co.udea.ssmu.api.model.dto.Archive;
+import co.udea.ssmu.api.model.dto.Archivo;
 import co.udea.ssmu.api.model.entity.ArchiveE;
-import co.udea.ssmu.api.model.mapper.ArchiveMapper;
-import co.udea.ssmu.api.model.repository.ArchiveRepository;
+import co.udea.ssmu.api.model.mapper.ArchivoMapper;
+import co.udea.ssmu.api.model.repository.ArchivoRepository;
+import co.udea.ssmu.api.service.archive.facade.IArchiveFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
@@ -17,60 +18,60 @@ public class ArchiveServiceImpl implements IArchiveService {
 
 
     @Autowired
-    ArchiveRepository archiveRepository;
+    ArchivoRepository archivoRepository;
 
     @Autowired
-    ArchiveMapper archiveMapper;
+    ArchivoMapper archivoMapper;
 
 
-    public Archive createArchive(Archive archive) {
+    public Archivo createArchive(Archivo archivo) {
 
-        ArchiveE archiveE = archiveMapper.toEntity(archive); // convertir el dto a entidad de base de datos
+        ArchiveE archiveE = archivoMapper.toEntity(archivo); // convertir el dto a entidad de base de datos
 
-        archiveE = archiveRepository.save(archiveE); // guardar la entidad en la base de datos
+        archiveE = archivoRepository.save(archiveE); // guardar la entidad en la base de datos
 
-        Archive archiveResponse = archiveMapper.toDto(archiveE); // convertir la entidad a dto
+        Archivo archivoResponse = archivoMapper.toDto(archiveE); // convertir la entidad a dto
 
-        return archiveResponse;
+        return archivoResponse;
 
 
     }
 
     @Override
     public Iterable<ArchiveE> listArchive() {
-        return archiveRepository.findAll();
+        return archivoRepository.findAll();
     }
 
     @Override
-    public Archive getArchiveById(Long id) {
+    public Archivo getArchiveById(Long id) {
 
-        Optional<ArchiveE> archiveEResult  = archiveRepository.findByArchiveId(id);
+        Optional<ArchiveE> archiveEResult  = archivoRepository.findByArchiveId(id); // guardar la entidad en la base de datos
 
         if( ! archiveEResult.isPresent() ) {
             return null;
         }
 
         ArchiveE archiveE = archiveEResult.get();
-        Archive archiveResponse = archiveMapper.toDto(archiveE); // convertir la entidad a dto
+        Archivo archivoResponse = archivoMapper.toDto(archiveE); // convertir la entidad a dto
 
-        return archiveResponse;
+        return archivoResponse;
     }
 
     @Override
-    public Archive deleteArchive(Long id) {
+    public Archivo deleteArchive(Long id) {
 
-        Optional<ArchiveE> archiveEResult  = archiveRepository.findByArchiveId(id);
+        Optional<ArchiveE> archiveEResult  = archivoRepository.findByArchiveId(id); // guardar la entidad en la base de datos
 
         if( ! archiveEResult.isPresent() ) {
             return null;
         }
 
         ArchiveE archiveE = archiveEResult.get();
-        archiveRepository.delete(archiveE);
+        archivoRepository.delete(archiveE);
 
-        Archive archiveResponse = archiveMapper.toDto(archiveE); // convertir la entidad a dto
+        Archivo archivoResponse = archivoMapper.toDto(archiveE); // convertir la entidad a dto
 
-        return archiveResponse;
+        return archivoResponse;
 
 
     }
