@@ -1,15 +1,11 @@
 package co.udea.ssmu.api.service.archive.facade;
 
 
-import co.udea.ssmu.api.model.dto.Archive;
-import co.udea.ssmu.api.model.entity.ArchiveE;
+import co.udea.ssmu.api.model.dto.Archivo;
 import co.udea.ssmu.api.service.archive.service.ArchiveService;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import co.udea.ssmu.api.model.mapper.ArchiveMapper;
-
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -19,12 +15,12 @@ public class ArchiveFacade implements IArchiveFacade{
     ArchiveService archiveService;
 
     @Override
-    public Archive createArchive(Archive archive) {
-        return archiveService.createArchive(archive);
+    public Archivo createArchive(Archivo archivo) {
+        return archiveService.createArchive(archivo);
     }
 
     @Override
-    public Archive deleteArchive(Long id) {
+    public Archivo deleteArchive(Long id) {
         return archiveService.deleteArchive(id);
     }
 
@@ -34,7 +30,7 @@ public class ArchiveFacade implements IArchiveFacade{
     }
 
     @Override
-    public Archive getArchiveById(Long id) {
+    public Archivo getArchiveById(Long id) {
         return getArchiveById(id);
     }
 }

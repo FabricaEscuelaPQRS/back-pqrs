@@ -8,17 +8,16 @@ import java.util.Date;
 
 @Data
 public class Pqrs {
-
-    private Long id = null;
-    private PqrsTypes pqrsType;
-    private Long createdBy;
-    private Long complainTo;
-    private PqrsStates pqrsState;
+    private Integer id;
+    private PqrsTypes tipoPqrs;
+    private Integer creadoPor;
+    private Integer quejaHacia;
+    private String creadoPorRol;
+    private PqrsStates estadoPqrs;
     private Long admin;
-    private Date createdAt;
-    private Approved approved;
-    private String pqrsDescription;
-    private ComplainType complainType = null;
-    private GrievanceType grievanceType = null;
-
+    private Date fechaCreacion;
+    private Approved estadoAprobacion;
+    private String descripcionPqrs;
+    private ComplainType tipoQueja;
+    private GrievanceType tipoReclamo;
 }

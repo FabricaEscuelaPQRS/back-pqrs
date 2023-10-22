@@ -1,7 +1,8 @@
 package co.udea.ssmu.api.model.mapper;
 
 import co.udea.ssmu.api.model.dto.Pqrs;
-import co.udea.ssmu.api.model.entity.PqrsE;
+
+import co.udea.ssmu.api.model.entity.PqrsEntity;
 import co.udea.ssmu.api.model.enums.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -11,31 +12,33 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface PqrsMapper {
-    @Mapping(target = "pqrsId", source = "id")
-    @Mapping(target = "pqrsType", source = "pqrsType", qualifiedByName = "pqrsTypeToPqrsTypeString")
-    @Mapping(target = "pqrsState", source = "pqrsState", qualifiedByName = "pqrsStateToPqrsStateString")
-    @Mapping(target = "approved", source = "approved", qualifiedByName = "approvedToApprovedString")
-    @Mapping(target = "createdAt", source = "createdAt")
-    @Mapping(target = "pqrsDescription", source = "pqrsDescription")
-    @Mapping(target = "complaintType", source = "complainType", qualifiedByName = "complainTypeToComplainTypeString")
-    @Mapping(target = "grievanceType", source = "grievanceType", qualifiedByName = "grievanceTypeToGrievanceTypeString")
-    @Mapping(target = "createdBy", source = "createdBy")
-    @Mapping(target = "adminId", source = "admin")
-    @Mapping(target = "complainTo", source = "complainTo")
-    PqrsE toEntity(Pqrs pqrs);
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "tipoPqrs", source = "tipoPqrs", qualifiedByName = "pqrsTypeToPqrsTypeString")
+    @Mapping(target = "estadoPqrs", source = "estadoPqrs", qualifiedByName = "pqrsStateToPqrsStateString")
+    @Mapping(target = "estadoAprobacion", source = "estadoAprobacion", qualifiedByName = "approvedToApprovedString")
+    @Mapping(target = "fechaCreacion", source = "fechaCreacion")
+    @Mapping(target = "descripcionPqrs", source = "descripcionPqrs")
+    @Mapping(target = "tipoQueja", source = "tipoQueja", qualifiedByName = "complainTypeToComplainTypeString")
+    @Mapping(target = "tipoReclamo", source = "tipoReclamo", qualifiedByName = "grievanceTypeToGrievanceTypeString")
+    @Mapping(target = "creadoPor", source = "creadoPor")
+    @Mapping(target = "creadoPorRol", source = "creadoPorRol")
+    @Mapping(target = "idAdmin", source = "admin")
+    @Mapping(target = "quejaHacia", source = "quejaHacia")
+    PqrsEntity toEntity(Pqrs pqrs);
 
-    @Mapping(target = "id", source = "pqrsId")
-    @Mapping(target = "pqrsType", source = "pqrsType", qualifiedByName = "pqrsTypeStringToPqrsType")
-    @Mapping(target = "pqrsState", source = "pqrsState", qualifiedByName = "pqrsStateStringToPqrsState")
-    @Mapping(target = "approved", source = "approved", qualifiedByName = "approvedStringToApproved")
-    @Mapping(target = "createdAt", source = "createdAt")
-    @Mapping(target = "pqrsDescription", source = "pqrsDescription")
-    @Mapping(target = "complainType", source = "complaintType", qualifiedByName = "complainStringToComplainType")
-    @Mapping(target = "grievanceType", source = "grievanceType", qualifiedByName = "grievanceStringToGrievanceType")
-    @Mapping(target = "createdBy", source = "createdBy")
-    @Mapping(target = "admin", source = "adminId")
-    @Mapping(target = "complainTo", source = "complainTo")
-    Pqrs toDto(PqrsE pqrsE);
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "tipoPqrs", source = "tipoPqrs", qualifiedByName = "pqrsTypeStringToPqrsType")
+    @Mapping(target = "estadoPqrs", source = "estadoPqrs", qualifiedByName = "pqrsStateStringToPqrsState")
+    @Mapping(target = "estadoAprobacion", source = "estadoAprobacion", qualifiedByName = "approvedStringToApproved")
+    @Mapping(target = "fechaCreacion", source = "fechaCreacion")
+    @Mapping(target = "descripcionPqrs", source = "descripcionPqrs")
+    @Mapping(target = "tipoQueja", source = "tipoQueja", qualifiedByName = "complainStringToComplainType")
+    @Mapping(target = "tipoReclamo", source = "tipoReclamo", qualifiedByName = "grievanceStringToGrievanceType")
+    @Mapping(target = "creadoPor", source = "creadoPor")
+    @Mapping(target = "creadoPorRol", source = "creadoPorRol")
+    @Mapping(target = "admin", source = "idAdmin")
+    @Mapping(target = "quejaHacia", source = "quejaHacia")
+    Pqrs toDto(PqrsEntity pqrsEntity);
 
     @Named("pqrsTypeToPqrsTypeString")
     default String pqrsTypeToPqrsTypeString(PqrsTypes pqrsType) {
@@ -91,16 +94,16 @@ public interface PqrsMapper {
         if (complainString.equals("Mal comportamiento del conductor")) {
             return ComplainType.MalComportamientoDelConductor;
         }
-        if (complainString.equals("Estado del vehículo")) {
+        if (complainString.equals("Estado del vehiculo")) {
             return ComplainType.EstadoDelVehiculo;
         }
         if (complainString.equals("Cobro inadecuado")) {
             return ComplainType.CobroInadecuado;
         }
-        if(complainString.equals("Conducción peligrosa")) {
+        if(complainString.equals("Conduccion peligrosa")) {
             return ComplainType.ConduccionPeligrosa;
         }
-        if(complainString.equals("Situaciones anómalas con pasajeros")) {
+        if(complainString.equals("Situaciones anomalas con pasajeros")) {
             return ComplainType.SituacionesAnomalasConPasajeros;
         }
         if(complainString.equals("Otros")) {
@@ -117,7 +120,7 @@ public interface PqrsMapper {
         if (grievanceString.equals("Sanciones Injustas")) {
             return GrievanceType.SancionesInjustas;
         }
-        if (grievanceString.equals("Problemas de Facturación")) {
+        if (grievanceString.equals("Problemas de Facturacion")) {
             return GrievanceType.ProblemasDeFacturacion;
         }
         if (grievanceString.equals("Otros")) {
@@ -128,8 +131,8 @@ public interface PqrsMapper {
 
 
     @Named("toEntityList")
-    List<PqrsE> toEntityList(List<Pqrs> pqrs);
+    List<PqrsEntity> toEntityList(List<Pqrs> pqrs);
 
     @Named("toDtoList")
-    List<Pqrs> toDtoList(List<PqrsE> pqrsE);
+    List<Pqrs> toDtoList(List<PqrsEntity> PqrsEntity);
 }

@@ -8,7 +8,7 @@
     <class>co.udea.ssmu.api.model.entity.SsmuUserE</class>
     <class>co.udea.ssmu.api.model.dto.Pqrs</class>
     <class>co.udea.ssmu.api.model.dto.SsmuUser</class>
-    <class>co.udea.ssmu.api.model.dto.PqrsMessage</class>
+    <class>co.udea.ssmu.api.model.dto.PqrsMensaje</class>
     <class>co.udea.ssmu.api.model.dto.ArchiveA</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@//localhost:1521/xepdb1"/>

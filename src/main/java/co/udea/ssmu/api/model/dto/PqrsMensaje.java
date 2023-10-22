@@ -1,9 +1,10 @@
 package co.udea.ssmu.api.model.dto;
+
 import lombok.Data;
 
 @Data
-public class Archive {
+public class PqrsMensaje {
     private Long id;
-    private String url;
-    private Long messageId;
+    private String mensaje;
+    private Long idPqrs;
 }

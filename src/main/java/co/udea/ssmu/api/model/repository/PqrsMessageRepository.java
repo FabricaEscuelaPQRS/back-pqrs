@@ -1,19 +1,20 @@
 package co.udea.ssmu.api.model.repository;
 
-import co.udea.ssmu.api.model.entity.PqrsMessageE;
+import co.udea.ssmu.api.model.entity.PqrsMensajeEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Repository
-public interface PqrsMessageRepository extends CrudRepository<PqrsMessageE, Integer> {
+public interface PqrsMessageRepository extends CrudRepository<PqrsMensajeEntity, Integer> {
 
-        PqrsMessageE findByMessageId(Integer messageId); // buscar un mensaje por su id
-        ArrayList<PqrsMessageE> findByPqrsId(Integer pqrsId); // buscar mensajes por el id de la pqrs
+        Optional<PqrsMensajeEntity> findById(Integer messageId); // buscar un mensaje por su id
+        ArrayList<PqrsMensajeEntity> findByPqrsId(Integer pqrsId); // buscar mensajes por el id de la pqrs
 
-        Iterable<PqrsMessageE> findAll(); // buscar todos los mensajes
+        ArrayList<PqrsMensajeEntity> findAll(); // buscar todos los mensajes
 
-        PqrsMessageE save(PqrsMessageE pqrsMessageE); // guardar un mensaje
+        PqrsMensajeEntity save(PqrsMensajeEntity pqrsMessageE); // guardar un mensaje
 
 }

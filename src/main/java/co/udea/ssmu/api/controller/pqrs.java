@@ -1,17 +1,8 @@
 package co.udea.ssmu.api.controller;
 
 
-import co.udea.ssmu.api.model.dto.Archive;
 import co.udea.ssmu.api.model.dto.Pqrs;
-import co.udea.ssmu.api.model.dto.User;
-import co.udea.ssmu.api.model.entity.ArchiveE;
-import co.udea.ssmu.api.model.entity.PqrsE;
-import co.udea.ssmu.api.model.entity.PqrsMessageE;
-import co.udea.ssmu.api.model.entity.SsmuUserE;
-import co.udea.ssmu.api.model.mapper.ArchiveMapper;
 import co.udea.ssmu.api.model.mapper.PqrsMapper;
-import co.udea.ssmu.api.model.mapper.UserMapper;
-import co.udea.ssmu.api.model.repository.PqrsMessageRepository;
 import co.udea.ssmu.api.model.repository.PqrsRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -27,11 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.xml.transform.Source;
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.List;
-
 @Tag(name = "Drivers", description = "Gestión de conductores")
 @RestController
 public class pqrs {
@@ -45,7 +31,6 @@ public class pqrs {
     public String pqrs() {
         return "this is a api for module pqrs";
     }
-
 
     @Operation(summary = "Guardar una pqrs")
     @ApiResponses({
