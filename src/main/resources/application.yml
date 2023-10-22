@@ -1,12 +1,10 @@
-# Server properties
+# Configuración de la base de datos Oracle
+spring.datasource.url: jdbc:oracle:thin:@localhost:1521/xepdb1
+spring.datasource.username: jair
+spring.datasource.password: root
+spring.datasource.driver-class-name: oracle.jdbc.OracleDriver
+spring.jpa.show-sql: true
+
+# Otros ajustes específicos de Spring Boot
 server:
-  servlet:
-    context-path: /ssmu-api
   port: 8080
-# Spring properties
-spring:
-  # Dev is active by default. This value can be overwritten by java arg param
-  profiles:
-    active: dev
-  application:
-    name: ssmu-api
