@@ -70,6 +70,30 @@ public class PqrsServiceImpl implements IPqrsService {
 
     @Override
     public Pqrs updatePqrs(String pqrsState, Integer id) {
-        return pqrsMapper.toDto(pqrsRepository.updateStateByPqrsId(pqrsState,id));
+
+        Optional<PqrsEntity> pqrsEResult  = pqrsRepository.findById(id);
+
+        if( ! pqrsEResult.isPresent() ) {
+            return null;
+        }
+
+        PqrsEntity pqrsE = pqrsEResult.get();
+        pqrsE.setEstadoPqrs(pqrsState);
+        pqrsRepository.save(pqrsE);
+        Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE);
+
+        return pqrsResponse;
+    }
+
+    @Override
+    public Iterable<PqrsEntity> getPqrsByUsuario(Integer id) {
+
+
+        return pqrsRepository.findAllByCreadoPorAndCreadoPorRol(id,"User");
+    }
+
+    @Override
+    public Iterable<PqrsEntity> getPqrsByConductor(Integer id) {
+        return  pqrsRepository.findAllByCreadoPorAndCreadoPorRol(id,"Conductor");
     }
 }

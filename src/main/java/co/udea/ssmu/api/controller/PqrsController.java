@@ -5,8 +5,6 @@ import co.udea.ssmu.api.model.dto.Pqrs;
 import co.udea.ssmu.api.model.entity.Conductor;
 import co.udea.ssmu.api.model.entity.PqrsEntity;
 
-import co.udea.ssmu.api.model.entity.PqrsMensajeEntity;
-import co.udea.ssmu.api.model.repository.ConductorRepository;
 import co.udea.ssmu.api.service.pqrs.IPqrsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -26,19 +24,16 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/pqrs")
+@CrossOrigin("*")
 public class PqrsController {
 
     @Autowired
     IPqrsService pqrsService;
 
-    @Autowired
-    ConductorRepository conductorRepository;
 
 
-    @GetMapping(path = "/index")
-    public ArrayList<Conductor> pqrs() {
-        return conductorRepository.findAll();
-    }
+
+
 
 
     @Operation(summary = "Guardar una pqrs")
@@ -112,8 +107,8 @@ public class PqrsController {
             @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta"),
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
-    @GetMapping(path = "/id")
-    public ResponseEntity<Pqrs> getPqrsById(@RequestBody Integer id){
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<Pqrs> getPqrsById(@PathVariable("id")  Integer id){
 
         Pqrs pqrsObtained= pqrsService.getPqrsById(id);
 
@@ -136,12 +131,44 @@ public class PqrsController {
             @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta"),
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
-    @PutMapping()
-    public ResponseEntity<Pqrs> getPqrsById(@RequestBody Integer id,@RequestBody String pqrsState){
+    @PutMapping(path = "/{id}/{pqrsState}")
+    public ResponseEntity<Pqrs> updatePqrsState(@PathVariable("id") Integer id,@PathVariable("pqrsState") String pqrsState){
 
 
         return new ResponseEntity<>(pqrsService.updatePqrs(pqrsState,id),HttpStatus.OK);
     }
 
+
+
+    @Operation(summary = "Listar pqrs por usuario")
+    @ApiResponses({
+            // Cambiar el schema
+            @ApiResponse(responseCode = "200", content = {
+                    @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
+            }, description = "La petición se ha procesado correctamente"),
+            @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta"),
+            @ApiResponse(responseCode = "400", description = "Error en la información")
+    })
+    @GetMapping(path="/user/{id}")
+    public ResponseEntity<Iterable<PqrsEntity>> listPqrsByUser(@PathVariable("id") Integer id){
+
+        return new ResponseEntity<>(pqrsService.getPqrsByUsuario(id),HttpStatus.OK);
+    }
+
+
+    @Operation(summary = "Listar pqrs por conductor")
+    @ApiResponses({
+            // Cambiar el schema
+            @ApiResponse(responseCode = "200", content = {
+                    @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
+            }, description = "La petición se ha procesado correctamente"),
+            @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta"),
+            @ApiResponse(responseCode = "400", description = "Error en la información")
+    })
+    @GetMapping(path="/conductor/{id}")
+    public ResponseEntity<Iterable<PqrsEntity>> listPqrsByConductor(@PathVariable("id") Integer id){
+
+        return new ResponseEntity<>(pqrsService.getPqrsByConductor(id),HttpStatus.OK);
+    }
 
 }

@@ -18,4 +18,8 @@ public interface IPqrsService {
     public Pqrs updatePqrs(String pqrsState, Integer id);
 
 
+    public Iterable<PqrsEntity> getPqrsByUsuario(Integer id);
+
+    public Iterable<PqrsEntity> getPqrsByConductor(Integer id);
+
 }

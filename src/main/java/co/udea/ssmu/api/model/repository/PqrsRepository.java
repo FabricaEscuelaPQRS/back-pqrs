@@ -19,12 +19,14 @@ public interface PqrsRepository extends CrudRepository<PqrsEntity, Integer> {
 
     ArrayList<PqrsEntity> findByIdAdmin(Integer idAdmin); // buscar todas las pqrs por el id del administrador
 
+
+    ArrayList<PqrsEntity> findAllByCreadoPorAndCreadoPorRol(Integer creadoPor, String creadoPorRol);
+
+
     PqrsEntity save(PqrsEntity pqrsEntity); // guardar una pqrs
 
 
-    @Modifying
-    @Query("update PqrsEntity p set p.estadoPqrs  = ?1 where p.id = ?2")
-    PqrsEntity updateStateByPqrsId(String pqrsState, Integer pqrsId);
+
 
 
 
