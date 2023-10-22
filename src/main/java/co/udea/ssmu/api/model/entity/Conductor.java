@@ -8,11 +8,13 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 @Entity
 @Table(name = "CONDUCTOR")
 public class Conductor {
+
+
+
     @Id
     @Column(name = "ID_CONDUCTOR", nullable = false)
     private Long id;
@@ -20,6 +22,78 @@ public class Conductor {
     @Size(max = 50)
     @Column(name = "NOMBRE", length = 50)
     private String nombre;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public Long getIdTipoConductor() {
+        return idTipoConductor;
+    }
+
+    public void setIdTipoConductor(Long idTipoConductor) {
+        this.idTipoConductor = idTipoConductor;
+    }
+
+    public String getNroServicios() {
+        return nroServicios;
+    }
+
+    public void setNroServicios(String nroServicios) {
+        this.nroServicios = nroServicios;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
 
     @Size(max = 50)
     @Column(name = "CELULAR", length = 50)
