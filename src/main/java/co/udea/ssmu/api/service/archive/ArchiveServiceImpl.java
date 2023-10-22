@@ -1,10 +1,9 @@
-package co.udea.ssmu.api.service.archive.service;
+package co.udea.ssmu.api.service.archive;
 
 import co.udea.ssmu.api.model.dto.Archive;
 import co.udea.ssmu.api.model.entity.ArchiveE;
 import co.udea.ssmu.api.model.mapper.ArchiveMapper;
 import co.udea.ssmu.api.model.repository.ArchiveRepository;
-import co.udea.ssmu.api.service.archive.facade.IArchiveFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class ArchiveService implements IArchiveFacade{
+public class ArchiveServiceImpl implements IArchiveService {
 
 
 
@@ -45,7 +44,7 @@ public class ArchiveService implements IArchiveFacade{
     @Override
     public Archive getArchiveById(Long id) {
 
-        Optional<ArchiveE> archiveEResult  = archiveRepository.findByArchiveId(id); // guardar la entidad en la base de datos
+        Optional<ArchiveE> archiveEResult  = archiveRepository.findByArchiveId(id);
 
         if( ! archiveEResult.isPresent() ) {
             return null;
@@ -60,7 +59,7 @@ public class ArchiveService implements IArchiveFacade{
     @Override
     public Archive deleteArchive(Long id) {
 
-        Optional<ArchiveE> archiveEResult  = archiveRepository.findByArchiveId(id); // guardar la entidad en la base de datos
+        Optional<ArchiveE> archiveEResult  = archiveRepository.findByArchiveId(id);
 
         if( ! archiveEResult.isPresent() ) {
             return null;

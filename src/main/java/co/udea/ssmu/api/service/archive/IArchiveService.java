@@ -1,11 +1,9 @@
-package co.udea.ssmu.api.service.archive.facade;
+package co.udea.ssmu.api.service.archive;
 
 import co.udea.ssmu.api.model.dto.Archive;
 import co.udea.ssmu.api.model.entity.ArchiveE;
 
-import java.util.Optional;
-
-public interface IArchiveFacade {
+public interface IArchiveService {
 
     public Archive createArchive(Archive archive);
     public Archive deleteArchive(Long id);

@@ -8,3 +8,4 @@ spring.jpa.show-sql: true
 # Otros ajustes específicos de Spring Boot
 server:
   port: 8080
+
