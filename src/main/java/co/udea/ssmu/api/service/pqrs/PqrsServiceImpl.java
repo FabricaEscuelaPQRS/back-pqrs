@@ -20,7 +20,7 @@ public class PqrsServiceImpl implements IPqrsService {
 
     @Override
     public Pqrs createPqrs(Pqrs pqrs) {
-        System.out.println(pqrs.toString());
+
 
         PqrsEntity pqrsE = pqrsMapper.toEntity(pqrs); // convertir el dto a entidad de base de datos
 
@@ -96,4 +96,7 @@ public class PqrsServiceImpl implements IPqrsService {
     public Iterable<PqrsEntity> getPqrsByConductor(Integer id) {
         return  pqrsRepository.findAllByCreadoPorAndCreadoPorRol(id,"Conductor");
     }
+
+
+
 }

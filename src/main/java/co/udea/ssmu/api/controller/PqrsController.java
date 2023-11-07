@@ -44,6 +44,7 @@ public class PqrsController {
             @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta"),
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping()
     public ResponseEntity<Pqrs> createPqrs(@RequestBody Pqrs pqrs){
 
@@ -53,7 +54,7 @@ public class PqrsController {
            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
        }
 
-        return new ResponseEntity<>(pqrsCreated,HttpStatus.OK);
+        return new ResponseEntity<>(pqrsCreated,HttpStatus.CREATED);
     }
 
 
@@ -67,8 +68,8 @@ public class PqrsController {
             @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta"),
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
-    @DeleteMapping()
-    public ResponseEntity<Pqrs> deletePqrs(@RequestBody Integer id){
+    @DeleteMapping("{id}")
+    public ResponseEntity<Pqrs> deletePqrs(@PathVariable("id")  Integer id){
 
         Pqrs pqrsDeleted= pqrsService.deletePqrs(id);
 
