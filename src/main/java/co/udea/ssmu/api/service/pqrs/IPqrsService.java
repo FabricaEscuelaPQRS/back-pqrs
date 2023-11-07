@@ -15,6 +15,7 @@ public interface IPqrsService {
     public Iterable<PqrsEntity> listPqrs();
     public Pqrs getPqrsById(Integer id);
 
+    //Este uptdate se enfoca en actualizar el estado de la pqrs
     public Pqrs updatePqrs(String pqrsState, Integer id);
 
 
