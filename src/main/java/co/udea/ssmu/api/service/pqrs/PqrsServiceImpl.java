@@ -13,30 +13,35 @@ import java.util.Optional;
 public class PqrsServiceImpl implements IPqrsService {
 
     @Autowired
-    PqrsRepository pqrsRepository;
+    PqrsRepository pqrsRepository; // Repositorio para acceder a la base de datos
 
     @Autowired
-    PqrsMapper pqrsMapper;
+    PqrsMapper pqrsMapper; // Mapper para convertir entre DTO y entidad
 
+
+    //Crear Pqrs
     @Override
     public Pqrs createPqrs(Pqrs pqrs) {
 
+        // Convierte el DTO a entidad de la base de datos
+        PqrsEntity pqrsE = pqrsMapper.toEntity(pqrs);
 
-        PqrsEntity pqrsE = pqrsMapper.toEntity(pqrs); // convertir el dto a entidad de base de datos
+        // Guarda la entidad en la base de datos
+        pqrsE = pqrsRepository.save(pqrsE);
 
-        System.out.println(pqrsE.getDescripcionPqrs());
-
-        pqrsE = pqrsRepository.save(pqrsE); // guardar la entidad en la base de datos
-
-        Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE); // convertir la entidad a dto
+        // Convierte la entidad nuevamente a DTO para la respuesta
+        Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE);
 
         return pqrsResponse;
     }
 
+
+    //Eliminar Pqrs
     @Override
     public Pqrs deletePqrs(Integer id) {
         Optional<PqrsEntity> pqrsEResult  = pqrsRepository.findById(id);
 
+        //Verifico que exista la pqrs
         if( ! pqrsEResult.isPresent() ) {
             return null;
         }
@@ -44,26 +49,34 @@ public class PqrsServiceImpl implements IPqrsService {
         PqrsEntity pqrsE = pqrsEResult.get();
         pqrsRepository.delete(pqrsE);
 
-        Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE); // convertir la entidad a dto
+        // Convierte la entidad eliminada a DTO para la respuesta
+        Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE);
 
         return pqrsResponse;
     }
 
+
+    //Listar pqrs
     @Override
     public Iterable<PqrsEntity> listPqrs() {
         return pqrsRepository.findAll();
     }
 
+
+    //Obtener pqrs por id
     @Override
     public Pqrs getPqrsById(Integer id) {
         Optional<PqrsEntity> pqrsEResult  = pqrsRepository.findById(id);
 
+        //Verifico que exista la pqrs
         if( ! pqrsEResult.isPresent() ) {
             return null;
         }
 
         PqrsEntity pqrsE = pqrsEResult.get();
-        Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE); // convertir la entidad a dto
+
+        // Convierte la entidad obtenida a DTO para la respuesta
+        Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE);
 
         return pqrsResponse;
     }
@@ -73,18 +86,24 @@ public class PqrsServiceImpl implements IPqrsService {
 
         Optional<PqrsEntity> pqrsEResult  = pqrsRepository.findById(id);
 
+        //Verifico que exista la pqrs
         if( ! pqrsEResult.isPresent() ) {
             return null;
         }
 
+        //Obtengo el resultado y actualizo valores
         PqrsEntity pqrsE = pqrsEResult.get();
         pqrsE.setEstadoPqrs(pqrsState);
         pqrsRepository.save(pqrsE);
+
+        // Convierte la entidad actualizada a DTO para la respuesta
         Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE);
 
         return pqrsResponse;
     }
 
+
+    //Obtener pqrs dado el usuario creador de tipo User
     @Override
     public Iterable<PqrsEntity> getPqrsByUsuario(Integer id) {
 
@@ -92,6 +111,8 @@ public class PqrsServiceImpl implements IPqrsService {
         return pqrsRepository.findAllByCreadoPorAndCreadoPorRol(id,"User");
     }
 
+
+    //Obtener pqrs dado el conductor creador de tipo Conductor
     @Override
     public Iterable<PqrsEntity> getPqrsByConductor(Integer id) {
         return  pqrsRepository.findAllByCreadoPorAndCreadoPorRol(id,"Conductor");

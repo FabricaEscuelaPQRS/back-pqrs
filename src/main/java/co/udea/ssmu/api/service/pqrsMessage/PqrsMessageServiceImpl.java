@@ -23,6 +23,8 @@ public class PqrsMessageServiceImpl implements IPqrsMessageService {
     @Autowired
     PqrsMensajeMapper pqrsMessageMapper;
 
+
+    //Crear mensaje de una pqrs
     @Override
     public PqrsMensaje createPqrsMessage(PqrsMensaje pqrsMessage) {
         PqrsMensajeEntity pqrsMessageE = pqrsMessageMapper.toEntity(pqrsMessage); // convertir el dto a entidad de base de datos
@@ -35,6 +37,7 @@ public class PqrsMessageServiceImpl implements IPqrsMessageService {
     }
 
 
+    //Eliminar mensaje de una pqrs
     @Override
     public PqrsMensaje deletePqrsMessage(Integer id) {
         Optional<PqrsMensajeEntity> pqrsMessageEResult  = pqrsMessageRepository.findById(id);
@@ -51,11 +54,15 @@ public class PqrsMessageServiceImpl implements IPqrsMessageService {
         return pqrsMessageResponse;
     }
 
+
+    //Listar todos los mensajes existentes
     @Override
     public Iterable<PqrsMensajeEntity> listPqrsMessage() {
         return pqrsMessageRepository.findAll();
     }
 
+
+    //Obtener un mensaje dado el id
     @Override
     public PqrsMensaje getPqrsMessageById(Integer id) {
         Optional<PqrsMensajeEntity> pqrsMessageEResult  = pqrsMessageRepository.findById(id); // guardar la entidad en la base de datos

@@ -30,12 +30,7 @@ public class PqrsController {
     @Autowired
     IPqrsService pqrsService;
 
-
-
-
-
-
-
+    // Método para crear una PQRS
     @Operation(summary = "Guardar una pqrs")
     @ApiResponses({
             @ApiResponse(responseCode = "200", content = {
@@ -58,7 +53,7 @@ public class PqrsController {
     }
 
 
-
+    // Método para borrar una PQRS
     @Operation(summary = "Borrar una pqrs")
     @ApiResponses({
             // Cambiar el schema
@@ -81,7 +76,7 @@ public class PqrsController {
     }
 
 
-
+    // Método para listar todas las PQRS
     @Operation(summary = "Listar pqrs")
     @ApiResponses({
             // Cambiar el schema
@@ -98,7 +93,7 @@ public class PqrsController {
     }
 
 
-
+    // Método para obtener una PQRS por su ID
     @Operation(summary = "Obtener pqrs por id")
     @ApiResponses({
             // Cambiar el schema
@@ -122,7 +117,7 @@ public class PqrsController {
 
 
 
-
+    // Método para actualizar el estado de una PQR
     @Operation(summary = "Actualizar estado pqrs ")
     @ApiResponses({
             // Cambiar el schema
@@ -140,7 +135,7 @@ public class PqrsController {
     }
 
 
-
+    // Método para listar PQRS por usuario
     @Operation(summary = "Listar pqrs por usuario")
     @ApiResponses({
             // Cambiar el schema
@@ -156,7 +151,7 @@ public class PqrsController {
         return new ResponseEntity<>(pqrsService.getPqrsByUsuario(id),HttpStatus.OK);
     }
 
-
+    // Método para listar PQRS por conductor
     @Operation(summary = "Listar pqrs por conductor")
     @ApiResponses({
             // Cambiar el schema

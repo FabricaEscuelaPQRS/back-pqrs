@@ -12,4 +12,7 @@ public interface IPqrsMessageService {
     public Iterable<PqrsMensajeEntity> listPqrsMessage();
     public PqrsMensaje getPqrsMessageById(Integer id);
 
+    //Agregar obtener mensajes dado el id de una pqrs
+
+
 }

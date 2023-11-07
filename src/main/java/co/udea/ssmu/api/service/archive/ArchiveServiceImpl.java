@@ -25,6 +25,7 @@ public class ArchiveServiceImpl implements IArchiveService {
     ArchivoMapper archivoMapper;
 
 
+    //Crear un archivo
     public Archivo createArchive(Archivo archivo) {
 
         PqrsArchivoEntity archiveE = archivoMapper.toEntity(archivo); // convertir el dto a entidad de base de datos
@@ -38,11 +39,15 @@ public class ArchiveServiceImpl implements IArchiveService {
 
     }
 
+
+    //Obtener todos los archivos
     @Override
     public Iterable<PqrsArchivoEntity> listArchive() {
         return archivoRepository.findAll();
     }
 
+
+    //Obtener archivo dado un id
     @Override
     public Archivo getArchiveById(Integer id) {
 
@@ -58,6 +63,8 @@ public class ArchiveServiceImpl implements IArchiveService {
         return archivoResponse;
     }
 
+
+    //Eliminar archivo
     @Override
     public Archivo deleteArchive(Integer id) {
 
