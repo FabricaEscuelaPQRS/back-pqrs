@@ -23,6 +23,8 @@ public class PqrsServiceImpl implements IPqrsService {
     @Override
     public Pqrs createPqrs(Pqrs pqrs) {
 
+
+
         // Convierte el DTO a entidad de la base de datos
         PqrsEntity pqrsE = pqrsMapper.toEntity(pqrs);
 
@@ -75,12 +77,16 @@ public class PqrsServiceImpl implements IPqrsService {
 
         PqrsEntity pqrsE = pqrsEResult.get();
 
+
         // Convierte la entidad obtenida a DTO para la respuesta
         Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE);
+
+
 
         return pqrsResponse;
     }
 
+    //Update pqrs
     @Override
     public Pqrs updatePqrs(String pqrsState, Integer id) {
 

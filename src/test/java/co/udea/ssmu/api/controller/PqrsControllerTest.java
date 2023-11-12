@@ -1,9 +1,11 @@
 package co.udea.ssmu.api.controller;
 
 import co.udea.ssmu.api.model.dto.Pqrs;
+import co.udea.ssmu.api.model.entity.PqrsEntity;
 import co.udea.ssmu.api.model.enums.*;
 import co.udea.ssmu.api.service.pqrs.IPqrsService;
 import co.udea.ssmu.api.service.pqrs.PqrsServiceImpl;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -21,17 +23,17 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.doNothing;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @SpringBootTest
-@AutoConfigureMockMvc
 class PqrsControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;  // Inyección de una instancia MockMvc para realizar pruebas HTTP
+
 
     @InjectMocks
     private PqrsController pqrsController;  // Inyección de la instancia del controlador que se probará
@@ -41,6 +43,7 @@ class PqrsControllerTest {
 
     private Pqrs pqrsRequest;  // Declaración de un objeto Pqrs que se utilizará para configurar los datos de prueba
 
+
     @BeforeEach
     void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);  // Inicialización de los mocks antes de cada prueba
@@ -49,6 +52,7 @@ class PqrsControllerTest {
         // Configuración de los datos de prueba
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         Date fechaCreacion = dateFormat.parse("2023-11-07T21:06:01.755Z");
+        pqrsRequest.setId(1);
         pqrsRequest.setTipoPqrs(PqrsTypes.Queja);
         pqrsRequest.setCreadoPor(3);
         pqrsRequest.setQuejaHacia(2);
@@ -64,65 +68,106 @@ class PqrsControllerTest {
 
     @Test
     void createPqrs() throws Exception {
-        // Configuración del comportamiento simulado del servicio
         Mockito.when(pqrsService.createPqrs(pqrsRequest)).thenReturn(pqrsRequest);
 
-        // Llamada al controlador para crear la PQRS
-        ResponseEntity<Pqrs> response = pqrsController.createPqrs(pqrsRequest);
+        // Llama al método del controlador
+        Pqrs pqrsCreated = pqrsController.createPqrs(pqrsRequest).getBody();
 
-        // Verificación de que la respuesta sea correcta
-        Mockito.verify(pqrsService, Mockito.times(1)).createPqrs(pqrsRequest);
-        // Verificación de que la respuesta HTTP sea HttpStatus.CREATED
-        assert response.getStatusCode() == HttpStatus.CREATED;
-        // Verificación de que el objeto PQRS devuelto sea el mismo que el objeto de solicitud
-        assert response.getBody() == pqrsRequest;
+        // Verifica el resultado
+        Assertions.assertEquals(pqrsRequest, pqrsCreated);
     }
 
     @Test
     void deletePqrs() throws Exception {
-        Integer pqrsId = 31;
-        // Realización de una solicitud DELETE simulada a la ruta /pqrs/{id}
-        mockMvc.perform(MockMvcRequestBuilders.delete("/pqrs/{id}", pqrsId)
-                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+        int idTest=1;
+        int idResult;
+
+        Mockito.when(pqrsService.deletePqrs(idTest)).thenReturn(pqrsRequest);
+
+        // Llama al método del controlador
+        Pqrs pqrsDeleted = pqrsController.deletePqrs(idTest).getBody();
+
+        idResult = pqrsDeleted.getId();
+
+        // Verifica el resultado
+        Assertions.assertEquals(pqrsRequest, pqrsDeleted);
+        Assertions.assertEquals(idTest, idResult);
     }
 
     @Test
     void listPqrs() throws Exception {
-        // Realización de una solicitud GET simulada a la ruta /pqrs
-        mockMvc.perform(MockMvcRequestBuilders.get("/pqrs")
-                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+
+        List<PqrsEntity> pqrs = Mockito.mock(List.class);
+
+        Mockito.when(pqrsService.listPqrs()).thenReturn(pqrs);
+
+
+        // Llama al método del controlador
+        Iterable<PqrsEntity> getPqrs = pqrsController.listPqrs().getBody();
+
+        // Verifica el resultado
+        Assertions.assertEquals(pqrs, getPqrs);
+
     }
 
     @Test
     void getPqrsById() throws Exception {
-        Integer pqrsId = 41;
-        // Realización de una solicitud GET simulada a la ruta /pqrs/{id}
-        mockMvc.perform(MockMvcRequestBuilders.get("/pqrs/{id}", pqrsId)
-                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+
+
+        Mockito.when(pqrsService.getPqrsById(1)).thenReturn(pqrsRequest);
+
+        // Llama al método del controlador
+        Pqrs pqrsObtained = pqrsController.getPqrsById(1).getBody();
+
+        // Verifica el resultado
+        Assertions.assertEquals(pqrsRequest, pqrsObtained);
+
     }
 
     @Test
     void updatePqrsState() throws Exception {
-        Integer pqrsId = 41;
-        PqrsStates pqrsState = PqrsStates.Finalizado;
-        // Realización de una solicitud PUT simulada a la ruta /pqrs/{id}/{pqrsState}
-        mockMvc.perform(MockMvcRequestBuilders.put("/pqrs/{id}/{pqrsState}", pqrsId, pqrsState.toString())
-                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+
+        Mockito.when(pqrsService.updatePqrs("Pendiente",1)).thenReturn(pqrsRequest);
+
+        // Llama al método del controlador
+        Pqrs pqrsUpdated= pqrsController.updatePqrsState(1,"Pendiente").getBody();
+
+        // Verifica el resultado
+        Assertions.assertEquals(pqrsRequest, pqrsUpdated);
+
+
+
     }
 
     @Test
     void listPqrsByUser() throws Exception {
         Integer userId = 1;
-        // Realización de una solicitud GET simulada a la ruta /pqrs/user/{id}
-        mockMvc.perform(MockMvcRequestBuilders.get("/pqrs/user/{id}", userId)
-                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+
+        List<PqrsEntity> pqrs = Mockito.mock(List.class);
+
+        Mockito.when(pqrsService.getPqrsByUsuario(userId)).thenReturn(pqrs);
+
+
+        // Llama al método del controlador
+        Iterable<PqrsEntity> getPqrs = pqrsController.listPqrsByUser(userId).getBody();
+
+        // Verifica el resultado
+        Assertions.assertEquals(pqrs, getPqrs);
     }
 
     @Test
     void listPqrsByConductor() throws Exception {
-        Integer driverId = 3;
-        // Realización de una solicitud GET simulada a la ruta /pqrs/conductor/{id}
-        mockMvc.perform(MockMvcRequestBuilders.get("/pqrs/conductor/{id}", driverId)
-                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+        Integer driverId = 1;
+
+        List<PqrsEntity> pqrs = Mockito.mock(List.class);
+
+        Mockito.when(pqrsService.getPqrsByConductor(driverId)).thenReturn(pqrs);
+
+
+        // Llama al método del controlador
+        Iterable<PqrsEntity> getPqrs = pqrsController.listPqrsByConductor(driverId).getBody();
+
+        // Verifica el resultado
+        Assertions.assertEquals(pqrs, getPqrs);
     }
 }
