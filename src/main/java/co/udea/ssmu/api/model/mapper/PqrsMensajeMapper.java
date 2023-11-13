@@ -13,11 +13,17 @@ public interface PqrsMensajeMapper {
     @Mapping(target = "id", source = "id")
     @Mapping(target = "mensaje", source = "mensaje")
     @Mapping(target = "idPqrs", source = "idPqrs")
+    @Mapping(target = "rolEscritor", source = "rolEscritor")
+    @Mapping(target = "idEscritor", source = "idEscritor")
+    @Mapping(target = "fechaEscritura", source = "fechaEscritura")
     PqrsMensajeEntity toEntity(PqrsMensaje pqrsMensaje);
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "mensaje", source = "mensaje")
     @Mapping(target = "idPqrs", source = "idPqrs")
+    @Mapping(target = "rolEscritor", source = "rolEscritor")
+    @Mapping(target = "idEscritor", source = "idEscritor")
+    @Mapping(target = "fechaEscritura", source = "fechaEscritura")
     PqrsMensaje toDto(PqrsMensajeEntity pqrsMessageE);
 
     @Named("toEntityList")

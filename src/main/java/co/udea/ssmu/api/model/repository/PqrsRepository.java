@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @Repository
-public interface PqrsRepository extends JpaRepository<PqrsEntity, Integer> {
+public interface PqrsRepository extends CrudRepository<PqrsEntity, Integer> {
     Optional<PqrsEntity> findById(Integer id);
-
+    ArrayList<PqrsEntity> findAll(); // buscar todas las pqrs
     ArrayList<PqrsEntity> findByCreadoPor(Integer creadoPor); // buscar todas las pqrs por el id del creador
 
     ArrayList<PqrsEntity> findByIdAdmin(Integer idAdmin); // buscar todas las pqrs por el id del administrador

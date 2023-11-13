@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @Entity
@@ -17,6 +19,15 @@ public class PqrsMensajeEntity {
 
     @Column(name = "ID_PQRS")
     private Integer idPqrs;
+
+    @Column(name = "ROL_ESCRITOR")
+    private String rolEscritor;
+
+    @Column(name = "ID_ESCRITOR")
+    private Integer idEscritor;
+
+    @Column(name = "FECHA_ESCRITURA")
+    private LocalDate fechaEscritura;
 
     @Lob
     @Column(name = "MENSAJE")
