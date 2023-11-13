@@ -167,4 +167,44 @@ public class PqrsController {
         return new ResponseEntity<>(pqrsService.getPqrsByConductor(id),HttpStatus.OK);
     }
 
+
+    // Método para aprobar una PQRS
+    @Operation(summary = "Aprobar una pqrs")
+    @ApiResponses({
+            //Cambiar el schema
+            @ApiResponse(responseCode = "200", content = {
+                    @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
+            }, description = "La petición se ha procesado correctamente"),
+            @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta"),
+            @ApiResponse(responseCode = "400", description = "Error en la información")
+    })
+    @PutMapping(path = "/{id}/aprobar")
+    public ResponseEntity<Pqrs> aprobarPqrs(@PathVariable("id") Integer id){
+            Pqrs result = pqrsService.aprovarRechazarPqrs("Aprobada",id);
+            if(result == null){
+                return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            }
+            return new ResponseEntity<>(result,HttpStatus.OK);
+
+    }
+
+    // Método para rechazar una PQRS
+    @Operation(summary = "Rechazar una pqrs")
+    @ApiResponses({
+            //Cambiar el schema
+            @ApiResponse(responseCode = "200", content = {
+                    @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
+            }, description = "La petición se ha procesado correctamente"),
+            @ApiResponse(responseCode = "500", description = "Error interno al procesar la respuesta"),
+            @ApiResponse(responseCode = "400", description = "Error en la información")
+    })
+    @PutMapping(path = "/{id}/rechazar")
+    public ResponseEntity<Pqrs> rechazarPqrs(@PathVariable("id") Integer id){
+        Pqrs result = pqrsService.aprovarRechazarPqrs("Rechazada",id);
+        if(result == null){
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(result,HttpStatus.OK);
+    }
+
 }

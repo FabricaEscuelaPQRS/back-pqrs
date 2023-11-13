@@ -5,18 +5,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
 import co.udea.ssmu.api.model.dto.Pqrs;
 import co.udea.ssmu.api.model.entity.PqrsEntity;
 import co.udea.ssmu.api.model.enums.*;
 import co.udea.ssmu.api.model.repository.PqrsRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -29,8 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
-import org.springframework.data.domain.Pageable;
-import org.springframework.test.context.ContextConfiguration;
+
 
 
 @SpringBootTest
@@ -115,7 +110,7 @@ class PqrsServiceImplTest {
     @Test
     void listPqrs() {
 
-        List<PqrsEntity> pqrs = Mockito.mock(List.class);
+        List<Pqrs> pqrs = Mockito.mock(List.class);
 
         when(pqrsRepository.findAll()).thenReturn(pqrs);
 

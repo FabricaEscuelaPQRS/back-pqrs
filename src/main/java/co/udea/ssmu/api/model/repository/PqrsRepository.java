@@ -19,6 +19,8 @@ public interface PqrsRepository extends CrudRepository<PqrsEntity, Integer> {
 
     ArrayList<PqrsEntity> findByIdAdmin(Integer idAdmin); // buscar todas las pqrs por el id del administrador
 
+    // exite una pqrs
+    boolean existsById(Integer id); // existe una pqrs por el id
 
     ArrayList<PqrsEntity> findAllByCreadoPorAndCreadoPorRol(Integer creadoPor, String creadoPorRol);
 
