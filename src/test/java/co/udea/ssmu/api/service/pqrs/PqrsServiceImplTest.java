@@ -115,9 +115,9 @@ class PqrsServiceImplTest {
     @Test
     void listPqrs() {
 
-        List<PqrsEntity> pqrs = Mockito.mock(List.class);
+        ArrayList<PqrsEntity> pqrs = Mockito.mock(ArrayList.class);
 
-        when(pqrsRepository.findAll()).thenReturn(pqrs);
+        when(pqrsRepository.findAll()).thenReturn( pqrs);
 
         Iterable<PqrsEntity> getPqrs = pqrsService.listPqrs();
 
