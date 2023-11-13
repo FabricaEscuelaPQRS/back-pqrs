@@ -180,7 +180,7 @@ public class PqrsController {
     })
     @PutMapping(path = "/{id}/aprobar")
     public ResponseEntity<Pqrs> aprobarPqrs(@PathVariable("id") Integer id){
-            Pqrs result = pqrsService.aprovarRechazarPqrs("Aprobada",id);
+            Pqrs result = pqrsService.aprovarRechazarPqrs("Aprobado",id);
             if(result == null){
                 return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
             }
@@ -200,7 +200,7 @@ public class PqrsController {
     })
     @PutMapping(path = "/{id}/rechazar")
     public ResponseEntity<Pqrs> rechazarPqrs(@PathVariable("id") Integer id){
-        Pqrs result = pqrsService.aprovarRechazarPqrs("Rechazada",id);
+        Pqrs result = pqrsService.aprovarRechazarPqrs("Rechazado",id);
         if(result == null){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
