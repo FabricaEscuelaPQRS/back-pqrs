@@ -23,4 +23,7 @@ public interface IPqrsService {
 
     public Iterable<PqrsEntity> getPqrsByConductor(Integer id);
 
+    //aprovar o rechazar una pqrs
+    public Pqrs aprovarRechazarPqrs(String pqrsState, Integer id);
+
 }

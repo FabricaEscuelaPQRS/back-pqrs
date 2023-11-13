@@ -125,5 +125,24 @@ public class PqrsServiceImpl implements IPqrsService {
     }
 
 
+    //aprovar o rechazar una pqrs
+    @Override
+    public Pqrs aprovarRechazarPqrs(String pqrsEstadoAprovacion, Integer id) {
+        Optional<PqrsEntity> pqrsEResult  = pqrsRepository.findById(id);
 
+        //Verifico que exista la pqrs
+        if( ! pqrsEResult.isPresent() ) {
+            return null;
+        }
+
+        //Obtengo el resultado y actualizo valores
+        PqrsEntity pqrsE = pqrsEResult.get();
+        pqrsE.setEstadoAprobacion(pqrsEstadoAprovacion);
+        pqrsRepository.save(pqrsE);
+
+        // Convierte la entidad actualizada a DTO para la respuesta
+        Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE);
+
+        return pqrsResponse;
+    }
 }

@@ -39,7 +39,7 @@ class PqrsControllerTest {
 
 
     @InjectMocks
-    private PqrsController pqrsController;  // Inyección de la instancia del controlador que se probaráaaaa
+    private PqrsController pqrsController;  // Inyección de la instancia del controlador que se probara
 
     @Mock
     private IPqrsService pqrsService;  // Creación de un mock para el servicio asociado que se inyectara dentro del controlador pqrs
