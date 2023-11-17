@@ -5,6 +5,7 @@ import co.udea.ssmu.api.model.dto.Conductor;
 import co.udea.ssmu.api.model.dto.Usuario;
 import co.udea.ssmu.api.model.entity.ConductorEntity;
 import co.udea.ssmu.api.model.entity.UsuarioEntity;
+import co.udea.ssmu.api.model.mapper.ConductorMapper;
 import co.udea.ssmu.api.model.mapper.ConductorMapperImpl;
 import co.udea.ssmu.api.model.mapper.UsuarioMapperImpl;
 import co.udea.ssmu.api.model.repository.ConductorRepository;
@@ -20,7 +21,7 @@ public class ConductorServiceImpl implements IConductorService{
     ConductorRepository conductorRepository;
 
     @Autowired
-    ConductorMapperImpl conductorMapper;
+    ConductorMapper conductorMapper;
 
 
 
