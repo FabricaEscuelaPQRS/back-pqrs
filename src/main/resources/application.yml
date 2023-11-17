@@ -1,8 +1,8 @@
 # Configuración de la base de datos Oracle
 
-#spring.datasource.url: jdbc:oracle:thin:@localhost:1521/xe
-#spring.datasource.username: system
-#spring.datasource.password: 1234
+#spring.datasource.url: jdbc:oracle:thin:@localhost:1521/xepdb1
+#spring.datasource.username: Jair
+#spring.datasource.password: root
 #spring.datasource.driver-class-name: oracle.jdbc.OracleDriver
 #spring.jpa.show-sql: true
 
