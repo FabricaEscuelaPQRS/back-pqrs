@@ -1,9 +1,9 @@
 package co.udea.ssmu.api.model.enums;
 
 public enum GrievanceType {
-    SANCIONES_INJUSTAS("Sanciones Injustas"),
-    PROBLEMAS_DE_FACTURACION("Problemas de Facturacion"),
-    OTROS("Otros");
+    SancionesInjustas("Sanciones Injustas"),
+    ProblemasDeFacturacion("Problemas de Facturacion"),
+    Otros("Otros");
 
     public final String description;
 

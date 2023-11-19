@@ -4,6 +4,7 @@ import co.udea.ssmu.api.model.dto.Pqrs;
 import co.udea.ssmu.api.model.entity.PqrsEntity;
 import co.udea.ssmu.api.model.enums.*;
 import co.udea.ssmu.api.service.pqrs.IPqrsService;
+import co.udea.ssmu.api.service.pqrs.PqrsServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,11 +14,22 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.doNothing;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @SpringBootTest
@@ -44,17 +56,17 @@ class PqrsControllerTest {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         Date fechaCreacion = dateFormat.parse("2023-11-07T21:06:01.755Z");
         pqrsRequest.setId(1);
-        pqrsRequest.setTipoPqrs(PqrsTypes.QUEJA);
+        pqrsRequest.setTipoPqrs(PqrsTypes.Queja);
         pqrsRequest.setCreadoPor(3);
         pqrsRequest.setQuejaHacia(2);
         pqrsRequest.setCreadoPorRol("User");
-        pqrsRequest.setEstadoPqrs(PqrsStates.FINALIZADO);
+        pqrsRequest.setEstadoPqrs(PqrsStates.Finalizado);
         pqrsRequest.setAdmin((long) 2);
         pqrsRequest.setEstadoAprobacion(Approved.APROBADO);
         pqrsRequest.setFechaCreacion(fechaCreacion);
         pqrsRequest.setDescripcionPqrs("string");
-        pqrsRequest.setTipoQueja(ComplainType.CONDUCCION_PELIGROSA);
-        pqrsRequest.setTipoReclamo(GrievanceType.SANCIONES_INJUSTAS);
+        pqrsRequest.setTipoQueja(ComplainType.ConduccionPeligrosa);
+        pqrsRequest.setTipoReclamo(GrievanceType.SancionesInjustas);
     }
 
     @Test

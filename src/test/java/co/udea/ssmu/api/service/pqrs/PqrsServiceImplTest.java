@@ -60,17 +60,17 @@ class PqrsServiceImplTest {
         LocalDate localDate = parsedDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
         pqrsRequestEntity.setId(1);
-        pqrsRequestEntity.setTipoPqrs(String.valueOf(PqrsTypes.QUEJA));
+        pqrsRequestEntity.setTipoPqrs(String.valueOf(PqrsTypes.Queja));
         pqrsRequestEntity.setCreadoPor(3);
         pqrsRequestEntity.setQuejaHacia(2);
         pqrsRequestEntity.setCreadoPorRol("User");
-        pqrsRequestEntity.setEstadoPqrs(String.valueOf(PqrsStates.FINALIZADO));
+        pqrsRequestEntity.setEstadoPqrs(String.valueOf(PqrsStates.Finalizado));
         pqrsRequestEntity.setIdAdmin((long) 2);
         pqrsRequestEntity.setEstadoAprobacion(String.valueOf(Approved.APROBADO));
         pqrsRequestEntity.setFechaCreacion(localDate);
         pqrsRequestEntity.setDescripcionPqrs("string");
-        pqrsRequestEntity.setTipoQueja(String.valueOf(ComplainType.CONDUCCION_PELIGROSA));
-        pqrsRequestEntity.setTipoReclamo(String.valueOf(GrievanceType.SANCIONES_INJUSTAS));
+        pqrsRequestEntity.setTipoQueja(String.valueOf(ComplainType.ConduccionPeligrosa));
+        pqrsRequestEntity.setTipoReclamo(String.valueOf(GrievanceType.SancionesInjustas));
 
 
 
