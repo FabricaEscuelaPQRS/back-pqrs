@@ -92,22 +92,22 @@ public interface PqrsMapper {
             return null;
         }
         if (complainString.equals("Mal comportamiento del conductor")) {
-            return ComplainType.MalComportamientoDelConductor;
+            return ComplainType.MAL_COMPORTAMIENTO_DEL_CONDUCTOR;
         }
         if (complainString.equals("Estado del vehiculo")) {
-            return ComplainType.EstadoDelVehiculo;
+            return ComplainType.ESTADO_DEL_VEHICULO;
         }
         if (complainString.equals("Cobro inadecuado")) {
-            return ComplainType.CobroInadecuado;
+            return ComplainType.COBRO_INADECUADO;
         }
         if(complainString.equals("Conduccion peligrosa")) {
-            return ComplainType.ConduccionPeligrosa;
+            return ComplainType.CONDUCCION_PELIGROSA;
         }
         if(complainString.equals("Situaciones anomalas con pasajeros")) {
-            return ComplainType.SituacionesAnomalasConPasajeros;
+            return ComplainType.SITUACIONES_ANOMALAS_CON_PASAJEROS;
         }
         if(complainString.equals("Otros")) {
-            return ComplainType.Otros;
+            return ComplainType.OTROS;
         }
         return null;
     }
@@ -118,13 +118,13 @@ public interface PqrsMapper {
             return null;
         }
         if (grievanceString.equals("Sanciones Injustas")) {
-            return GrievanceType.SancionesInjustas;
+            return GrievanceType.SANCIONES_INJUSTAS;
         }
         if (grievanceString.equals("Problemas de Facturacion")) {
-            return GrievanceType.ProblemasDeFacturacion;
+            return GrievanceType.PROBLEMAS_DE_FACTURACION;
         }
         if (grievanceString.equals("Otros")) {
-            return GrievanceType.Otros;
+            return GrievanceType.OTROS;
         }
         return null;
     }
@@ -134,5 +134,5 @@ public interface PqrsMapper {
     List<PqrsEntity> toEntityList(List<Pqrs> pqrs);
 
     @Named("toDtoList")
-    List<Pqrs> toDtoList(List<PqrsEntity> PqrsEntity);
+    List<Pqrs> toDtoList(List<PqrsEntity> pqrsEntity);
 }
