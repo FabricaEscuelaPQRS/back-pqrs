@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/conductor")
-@CrossOrigin("*")
+@CrossOrigin("localhost:3000")
 public class ConductorController {
 
 

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/pqrs")
-@CrossOrigin("*")
+@CrossOrigin("localhost:3000")
 public class PqrsController {
 
     @Autowired
