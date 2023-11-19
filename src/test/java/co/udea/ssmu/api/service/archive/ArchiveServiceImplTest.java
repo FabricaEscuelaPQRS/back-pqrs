@@ -37,10 +37,8 @@ class ArchiveServiceImplTest {
     @Spy
     ArchivoMapper archivoMapper= Mappers.getMapper(ArchivoMapper.class);
 
-    @InjectMocks
+
     private ArchiveServiceImpl archiveService;
-
-
 
     private PqrsArchivoEntity pqrsArchivoEntity;
 
@@ -48,6 +46,7 @@ class ArchiveServiceImplTest {
     @BeforeEach
     void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);  // Inicialización de los mocks antes de cada prueba
+        archiveService = new ArchiveServiceImpl(archivoMapper, archivoRepository);
 
         pqrsArchivoEntity = new PqrsArchivoEntity();  
         // Configuración de los datos de prueba

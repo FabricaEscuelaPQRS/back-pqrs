@@ -1,4 +1,5 @@
 package co.udea.ssmu.api.service.pqrs;
+import co.udea.ssmu.api.controller.PqrsController;
 import co.udea.ssmu.api.model.mapper.PqrsMapper;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,7 +40,7 @@ class PqrsServiceImplTest {
     PqrsMapper pqrsMapper= Mappers.getMapper(PqrsMapper.class);
 
 
-    @InjectMocks
+
     private PqrsServiceImpl pqrsService;
 
 
@@ -50,7 +51,7 @@ class PqrsServiceImplTest {
     @BeforeEach
     void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);  // Inicialización de los mocks antes de cada prueba
-
+        pqrsService = new PqrsServiceImpl(pqrsRepository,pqrsMapper);
         pqrsRequestEntity = new PqrsEntity();  // Creación de un objeto Pqrs para configurar datos de prueba
         // Configuración de los datos de prueba
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");

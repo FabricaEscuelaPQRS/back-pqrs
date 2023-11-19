@@ -8,6 +8,7 @@ import co.udea.ssmu.api.model.entity.PqrsMensajeEntity;
 import co.udea.ssmu.api.model.mapper.PqrsMensajeMapper;
 import co.udea.ssmu.api.model.repository.PqrsMessageRepository;
 
+import co.udea.ssmu.api.service.pqrs.PqrsServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +35,7 @@ class PqrsMessageServiceImplTest {
     @Spy
     PqrsMensajeMapper pqrsMensajeMapper= Mappers.getMapper(PqrsMensajeMapper.class);
 
-    @InjectMocks
+
     private PqrsMessageServiceImpl pqrsMessageService;
 
 
@@ -44,7 +45,7 @@ class PqrsMessageServiceImplTest {
     @BeforeEach
     void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);  // Inicialización de los mocks antes de cada prueba
-
+        pqrsMessageService = new PqrsMessageServiceImpl(pqrsMessageRepository,pqrsMensajeMapper);
         pqrsMensajeRequestEntity = new PqrsMensajeEntity();
         pqrsMensajeRequestEntity.setId(1);
         pqrsMensajeRequestEntity.setIdPqrs(1);

@@ -38,7 +38,7 @@ class PqrsControllerTest {
 
 
 
-    @InjectMocks
+
     private PqrsController pqrsController;  // Inyección de la instancia del controlador que se probara
 
     @Mock
@@ -50,7 +50,7 @@ class PqrsControllerTest {
     @BeforeEach
     void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);  // Inicialización de los mocks antes de cada prueba
-
+        pqrsController = new PqrsController(pqrsService);
         pqrsRequest = new Pqrs();  // Creación de un objeto Pqrs para configurar datos de prueba
         // Configuración de los datos de prueba
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
