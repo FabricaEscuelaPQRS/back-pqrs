@@ -39,8 +39,8 @@ public class PqrsController {
     })
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping()
-    @Nullable
-    public ResponseEntity<Pqrs> createPqrs(@RequestBody Pqrs pqrs){
+
+    public ResponseEntity<Pqrs> createPqrs(@RequestBody @Nullable Pqrs pqrs){
 
        Pqrs pqrsCreated= pqrsService.createPqrs(pqrs);
 
@@ -63,8 +63,8 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @DeleteMapping("{id}")
-    @Nullable
-    public ResponseEntity<Pqrs> deletePqrs(@PathVariable("id")  Integer id){
+
+    public ResponseEntity<Pqrs> deletePqrs(@PathVariable("id") @Nullable  Integer id){
 
         Pqrs pqrsDeleted= pqrsService.deletePqrs(id);
 
@@ -104,8 +104,8 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @GetMapping(path = "/{id}")
-    @Nullable
-    public ResponseEntity<Pqrs> getPqrsById(@PathVariable("id")  Integer id){
+
+    public ResponseEntity<Pqrs> getPqrsById(@PathVariable("id") @Nullable Integer id){
 
         Pqrs pqrsObtained= pqrsService.getPqrsById(id);
 
@@ -180,8 +180,8 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @PutMapping(path = "/{id}/aprobar")
-    @Nullable
-    public ResponseEntity<Pqrs> aprobarPqrs(@PathVariable("id") Integer id){
+
+    public ResponseEntity<Pqrs> aprobarPqrs(@PathVariable("id") @Nullable Integer id){
             Pqrs result = pqrsService.aprovarRechazarPqrs("APROBADO",id);
             if(result == null){
                 return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -201,8 +201,8 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @PutMapping(path = "/{id}/rechazar")
-    @Nullable
-    public ResponseEntity<Pqrs> rechazarPqrs(@PathVariable("id") Integer id){
+
+    public ResponseEntity<Pqrs> rechazarPqrs(@PathVariable("id") @Nullable Integer id){
         Pqrs result = pqrsService.aprovarRechazarPqrs("Rechazado",id);
         if(result == null){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
