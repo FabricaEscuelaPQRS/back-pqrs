@@ -9,7 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,14 +39,14 @@ public class PqrsController {
     })
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping()
-    @Nullable
+
     public ResponseEntity<Pqrs> createPqrs(@RequestBody  Pqrs pqrs){
 
        Pqrs pqrsCreated= pqrsService.createPqrs(pqrs);
 
        if (pqrsCreated == null){
 
-           return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+           return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
        }
 
         return new ResponseEntity<>(pqrsCreated,HttpStatus.CREATED);
@@ -64,13 +64,12 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @DeleteMapping("{id}")
-    @Nullable
     public ResponseEntity<Pqrs> deletePqrs(@PathVariable("id")   Integer id){
 
         Pqrs pqrsDeleted= pqrsService.deletePqrs(id);
 
         if (pqrsDeleted == null){
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         return new ResponseEntity<>(pqrsDeleted,HttpStatus.OK);
@@ -105,13 +104,12 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @GetMapping(path = "/{id}")
-    @Nullable
     public ResponseEntity<Pqrs> getPqrsById(@PathVariable("id")  Integer id){
 
         Pqrs pqrsObtained= pqrsService.getPqrsById(id);
 
         if (pqrsObtained == null){
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         return new ResponseEntity<>(pqrsObtained,HttpStatus.OK);
@@ -181,11 +179,11 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @PutMapping(path = "/{id}/aprobar")
-    @Nullable
+
     public ResponseEntity<Pqrs> aprobarPqrs(@PathVariable("id")  Integer id){
             Pqrs result = pqrsService.aprovarRechazarPqrs("APROBADO",id);
             if(result == null){
-                return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
             return new ResponseEntity<>(result,HttpStatus.OK);
 
@@ -202,11 +200,11 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @PutMapping(path = "/{id}/rechazar")
-    @Nullable
+
     public ResponseEntity<Pqrs> rechazarPqrs(@PathVariable("id")  Integer id){
         Pqrs result = pqrsService.aprovarRechazarPqrs("Rechazado",id);
         if(result == null){
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(result,HttpStatus.OK);
     }
