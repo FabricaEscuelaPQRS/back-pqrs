@@ -1,11 +1,10 @@
 package co.udea.ssmu.api.service.archive;
 
-import co.udea.ssmu.api.model.dto.Archivo;
 
+import co.udea.ssmu.api.model.dto.Archivo;
 import co.udea.ssmu.api.model.entity.PqrsArchivoEntity;
 import co.udea.ssmu.api.model.mapper.ArchivoMapper;
 import co.udea.ssmu.api.model.repository.ArchivoRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
@@ -32,9 +31,9 @@ public class ArchiveServiceImpl implements IArchiveService {
 
         archiveE = archivoRepository.save(archiveE); // guardar la entidad en la base de datos
 
-        Archivo archivoResponse = archivoMapper.toDto(archiveE); // convertir la entidad a dto
 
-        return archivoResponse;
+
+        return archivoMapper.toDto(archiveE);
 
 
     }
@@ -58,9 +57,8 @@ public class ArchiveServiceImpl implements IArchiveService {
         }
 
         PqrsArchivoEntity archiveE = archiveEResult.get();
-        Archivo archivoResponse = archivoMapper.toDto(archiveE); // convertir la entidad a dto
 
-        return archivoResponse;
+        return archivoMapper.toDto(archiveE);
     }
 
 
@@ -77,9 +75,9 @@ public class ArchiveServiceImpl implements IArchiveService {
         PqrsArchivoEntity archiveE = archiveEResult.get();
         archivoRepository.delete(archiveE);
 
-        Archivo archivoResponse = archivoMapper.toDto(archiveE); // convertir la entidad a dto
 
-        return archivoResponse;
+
+        return archivoMapper.toDto(archiveE);
 
 
     }

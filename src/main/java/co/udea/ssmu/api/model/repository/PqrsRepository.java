@@ -2,9 +2,7 @@ package co.udea.ssmu.api.model.repository;
 
 
 import co.udea.ssmu.api.model.entity.PqrsEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

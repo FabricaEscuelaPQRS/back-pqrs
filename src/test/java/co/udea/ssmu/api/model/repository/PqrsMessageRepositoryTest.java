@@ -70,7 +70,7 @@ class PqrsMessageRepositoryTest {
         ArrayList<PqrsMensajeEntity> pqrsMessageEntityList = pqrsMessageRepository.findAll();
 
         Assertions.assertThat(pqrsMessageEntityList).isNotNull();
-        Assertions.assertThat(pqrsMessageEntityList.size()).isEqualTo(1);
+        Assertions.assertThat(pqrsMessageEntityList).hasSize(1);
 
     }
 
@@ -82,7 +82,7 @@ class PqrsMessageRepositoryTest {
 
         //Assert
         Assertions.assertThat(savedPqrsMessage).isNotNull();
-        Assertions.assertThat(savedPqrsMessage.getId()).isGreaterThan(0);
+        Assertions.assertThat(savedPqrsMessage.getId()).isPositive();
 
     }
 }

@@ -2,7 +2,6 @@ package co.udea.ssmu.api.controller;
 
 
 import co.udea.ssmu.api.model.dto.Pqrs;
-import co.udea.ssmu.api.model.entity.Conductor;
 import co.udea.ssmu.api.model.entity.PqrsEntity;
 
 import co.udea.ssmu.api.service.pqrs.IPqrsService;
@@ -12,13 +11,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 
 @Tag(name = "Pqrs", description = "Recursos de PQRS")
 
@@ -41,6 +39,7 @@ public class PqrsController {
     })
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping()
+    @Nullable
     public ResponseEntity<Pqrs> createPqrs(@RequestBody Pqrs pqrs){
 
        Pqrs pqrsCreated= pqrsService.createPqrs(pqrs);
@@ -64,6 +63,7 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @DeleteMapping("{id}")
+    @Nullable
     public ResponseEntity<Pqrs> deletePqrs(@PathVariable("id")  Integer id){
 
         Pqrs pqrsDeleted= pqrsService.deletePqrs(id);
@@ -104,6 +104,7 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @GetMapping(path = "/{id}")
+    @Nullable
     public ResponseEntity<Pqrs> getPqrsById(@PathVariable("id")  Integer id){
 
         Pqrs pqrsObtained= pqrsService.getPqrsById(id);
@@ -179,8 +180,9 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @PutMapping(path = "/{id}/aprobar")
+    @Nullable
     public ResponseEntity<Pqrs> aprobarPqrs(@PathVariable("id") Integer id){
-            Pqrs result = pqrsService.aprovarRechazarPqrs("Aprobado",id);
+            Pqrs result = pqrsService.aprovarRechazarPqrs("APROBADO",id);
             if(result == null){
                 return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
             }
@@ -199,6 +201,7 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @PutMapping(path = "/{id}/rechazar")
+    @Nullable
     public ResponseEntity<Pqrs> rechazarPqrs(@PathVariable("id") Integer id){
         Pqrs result = pqrsService.aprovarRechazarPqrs("Rechazado",id);
         if(result == null){

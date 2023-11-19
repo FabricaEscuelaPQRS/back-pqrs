@@ -66,7 +66,7 @@ class PqrsServiceImplTest {
         pqrsRequestEntity.setCreadoPorRol("User");
         pqrsRequestEntity.setEstadoPqrs(String.valueOf(PqrsStates.Finalizado));
         pqrsRequestEntity.setIdAdmin((long) 2);
-        pqrsRequestEntity.setEstadoAprobacion(String.valueOf(Approved.Aprobado));
+        pqrsRequestEntity.setEstadoAprobacion(String.valueOf(Approved.APROBADO));
         pqrsRequestEntity.setFechaCreacion(localDate);
         pqrsRequestEntity.setDescripcionPqrs("string");
         pqrsRequestEntity.setTipoQueja(String.valueOf(ComplainType.ConduccionPeligrosa));
@@ -89,9 +89,6 @@ class PqrsServiceImplTest {
         Pqrs savedPqrs = pqrsService.createPqrs(pqrsMapper.toDto(pqrsRequestEntity));
 
         Assertions.assertThat(savedPqrs).isNotNull();
-
-
-
 
     }
 

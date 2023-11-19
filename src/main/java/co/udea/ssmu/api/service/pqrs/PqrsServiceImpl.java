@@ -31,10 +31,9 @@ public class PqrsServiceImpl implements IPqrsService {
         // Guarda la entidad en la base de datos
         pqrsE = pqrsRepository.save(pqrsE);
 
-        // Convierte la entidad nuevamente a DTO para la respuesta
-        Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE);
 
-        return pqrsResponse;
+
+        return pqrsMapper.toDto(pqrsE);
     }
 
 
@@ -51,10 +50,9 @@ public class PqrsServiceImpl implements IPqrsService {
         PqrsEntity pqrsE = pqrsEResult.get();
         pqrsRepository.delete(pqrsE);
 
-        // Convierte la entidad eliminada a DTO para la respuesta
-        Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE);
 
-        return pqrsResponse;
+
+        return pqrsMapper.toDto(pqrsE);
     }
 
 
@@ -78,12 +76,11 @@ public class PqrsServiceImpl implements IPqrsService {
         PqrsEntity pqrsE = pqrsEResult.get();
 
 
-        // Convierte la entidad obtenida a DTO para la respuesta
-        Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE);
 
 
 
-        return pqrsResponse;
+
+        return pqrsMapper.toDto(pqrsE);
     }
 
     //Update pqrs
@@ -102,10 +99,9 @@ public class PqrsServiceImpl implements IPqrsService {
         pqrsE.setEstadoPqrs(pqrsState);
         pqrsRepository.save(pqrsE);
 
-        // Convierte la entidad actualizada a DTO para la respuesta
-        Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE);
 
-        return pqrsResponse;
+
+        return pqrsMapper.toDto(pqrsE);
     }
 
 
@@ -140,9 +136,8 @@ public class PqrsServiceImpl implements IPqrsService {
         pqrsE.setEstadoAprobacion(pqrsEstadoAprovacion);
         pqrsRepository.save(pqrsE);
 
-        // Convierte la entidad actualizada a DTO para la respuesta
-        Pqrs pqrsResponse = pqrsMapper.toDto(pqrsE);
 
-        return pqrsResponse;
+
+        return  pqrsMapper.toDto(pqrsE);
     }
 }

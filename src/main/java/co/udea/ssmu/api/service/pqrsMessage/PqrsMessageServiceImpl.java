@@ -3,11 +3,8 @@ package co.udea.ssmu.api.service.pqrsMessage;
 
 import co.udea.ssmu.api.model.dto.PqrsMensaje;
 
-
-
 import co.udea.ssmu.api.model.entity.PqrsMensajeEntity;
 import co.udea.ssmu.api.model.mapper.PqrsMensajeMapper;
-
 import co.udea.ssmu.api.model.repository.PqrsMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,9 +28,9 @@ public class PqrsMessageServiceImpl implements IPqrsMessageService {
 
         pqrsMessageE = pqrsMessageRepository.save(pqrsMessageE); // guardar la entidad en la base de datos
 
-        PqrsMensaje pqrsMessageResponse = pqrsMessageMapper.toDto(pqrsMessageE); // convertir la entidad a dto
 
-        return pqrsMessageResponse;
+
+        return pqrsMessageMapper.toDto(pqrsMessageE);
     }
 
 
@@ -49,9 +46,9 @@ public class PqrsMessageServiceImpl implements IPqrsMessageService {
         PqrsMensajeEntity pqrsMessageE = pqrsMessageEResult.get();
         pqrsMessageRepository.delete(pqrsMessageE);
 
-        PqrsMensaje pqrsMessageResponse = pqrsMessageMapper.toDto(pqrsMessageE); // convertir la entidad a dto
 
-        return pqrsMessageResponse;
+
+        return pqrsMessageMapper.toDto(pqrsMessageE);
     }
 
 
@@ -72,8 +69,8 @@ public class PqrsMessageServiceImpl implements IPqrsMessageService {
         }
 
         PqrsMensajeEntity pqrsMessageE = pqrsMessageEResult.get();
-        PqrsMensaje pqrsMessageResponse = pqrsMessageMapper.toDto(pqrsMessageE); // convertir la entidad a dto
 
-        return pqrsMessageResponse;
+
+        return pqrsMessageMapper.toDto(pqrsMessageE);
     }
 }

@@ -2,9 +2,9 @@ package co.udea.ssmu.api.controller;
 
 import co.udea.ssmu.api.model.dto.Conductor;
 import co.udea.ssmu.api.model.dto.Pqrs;
-import co.udea.ssmu.api.model.dto.Usuario;
+
 import co.udea.ssmu.api.service.conductor.IConductorService;
-import co.udea.ssmu.api.service.user.IUserService;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

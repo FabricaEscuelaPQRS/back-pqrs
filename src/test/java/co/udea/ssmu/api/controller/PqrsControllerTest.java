@@ -62,7 +62,7 @@ class PqrsControllerTest {
         pqrsRequest.setCreadoPorRol("User");
         pqrsRequest.setEstadoPqrs(PqrsStates.Finalizado);
         pqrsRequest.setAdmin((long) 2);
-        pqrsRequest.setEstadoAprobacion(Approved.Aprobado);
+        pqrsRequest.setEstadoAprobacion(Approved.APROBADO);
         pqrsRequest.setFechaCreacion(fechaCreacion);
         pqrsRequest.setDescripcionPqrs("string");
         pqrsRequest.setTipoQueja(ComplainType.ConduccionPeligrosa);

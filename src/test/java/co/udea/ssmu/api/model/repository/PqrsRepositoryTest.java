@@ -51,7 +51,7 @@ class PqrsRepositoryTest {
         pqrsRequestEntity.setCreadoPorRol("User");
         pqrsRequestEntity.setEstadoPqrs(String.valueOf(PqrsStates.Finalizado));
         pqrsRequestEntity.setIdAdmin((long) 2);
-        pqrsRequestEntity.setEstadoAprobacion(String.valueOf(Approved.Aprobado));
+        pqrsRequestEntity.setEstadoAprobacion(String.valueOf(Approved.APROBADO));
         pqrsRequestEntity.setFechaCreacion(localDate);
         pqrsRequestEntity.setDescripcionPqrs("string");
         pqrsRequestEntity.setTipoQueja(String.valueOf(ComplainType.ConduccionPeligrosa));
@@ -85,7 +85,7 @@ class PqrsRepositoryTest {
         List<PqrsEntity> pqrsEntityList = pqrsRepository.findAll();
 
         Assertions.assertThat(pqrsEntityList).isNotNull();
-        Assertions.assertThat(pqrsEntityList.size()).isEqualTo(1);
+        Assertions.assertThat(pqrsEntityList).hasSize(1);
 
     }
 
@@ -127,7 +127,7 @@ class PqrsRepositoryTest {
 
         //Assert
         Assertions.assertThat(savedPqrs).isNotNull();
-        Assertions.assertThat(savedPqrs.getId()).isGreaterThan(0);
+        Assertions.assertThat(savedPqrs.getId()).isPositive();
 
     }
 }
