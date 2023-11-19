@@ -8,7 +8,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,8 +19,13 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("localhost:3000")
 public class UsuarioController {
 
+    private final IUserService userService;
+
+    // Constructor for constructor injection
     @Autowired
-    IUserService userService;
+    public UsuarioController(IUserService userService) {
+        this.userService = userService;
+    }
 
     // Método para actualizar el estado de un usuario
     @Operation(summary = "Actualizar estado usuario ",

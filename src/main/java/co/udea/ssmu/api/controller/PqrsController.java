@@ -5,13 +5,14 @@ import co.udea.ssmu.api.model.dto.Pqrs;
 import co.udea.ssmu.api.model.entity.PqrsEntity;
 
 import co.udea.ssmu.api.service.pqrs.IPqrsService;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.annotation.Nullable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,8 +26,16 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("localhost:3000")
 public class PqrsController {
 
+
+
+    private final IPqrsService pqrsService;
+
+    // Constructor for constructor injection
     @Autowired
-    IPqrsService pqrsService;
+    public PqrsController(IPqrsService pqrsService) {
+        this.pqrsService = pqrsService;
+    }
+
 
     // Método para crear una PQRS
     @Operation(summary = "Guardar una pqrs",

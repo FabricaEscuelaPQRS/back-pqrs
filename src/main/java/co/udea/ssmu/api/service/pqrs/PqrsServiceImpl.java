@@ -2,7 +2,9 @@ package co.udea.ssmu.api.service.pqrs;
 
 import co.udea.ssmu.api.model.dto.Pqrs;
 import co.udea.ssmu.api.model.entity.PqrsEntity;
+
 import co.udea.ssmu.api.model.mapper.PqrsMapper;
+
 import co.udea.ssmu.api.model.repository.PqrsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +14,19 @@ import java.util.Optional;
 @Service
 public class PqrsServiceImpl implements IPqrsService {
 
-    @Autowired
-    PqrsRepository pqrsRepository; // Repositorio para acceder a la base de datos
 
+
+
+    private final PqrsRepository pqrsRepository;
+    private final PqrsMapper pqrsMapper;
+
+
+    // Constructor for constructor injection
     @Autowired
-    PqrsMapper pqrsMapper; // Mapper para convertir entre DTO y entidad
+    public PqrsServiceImpl(PqrsRepository pqrsRepository, PqrsMapper pqrsMapper) {
+        this.pqrsMapper = pqrsMapper;
+        this.pqrsRepository = pqrsRepository;
+    }
 
 
     //Crear Pqrs

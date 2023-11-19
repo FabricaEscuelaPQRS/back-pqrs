@@ -4,8 +4,10 @@ package co.udea.ssmu.api.service.pqrsMessage;
 import co.udea.ssmu.api.model.dto.PqrsMensaje;
 
 import co.udea.ssmu.api.model.entity.PqrsMensajeEntity;
+
 import co.udea.ssmu.api.model.mapper.PqrsMensajeMapper;
 import co.udea.ssmu.api.model.repository.PqrsMessageRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +16,24 @@ import java.util.Optional;
 @Service
 public class PqrsMessageServiceImpl implements IPqrsMessageService {
 
-    @Autowired
-    PqrsMessageRepository pqrsMessageRepository;
 
+
+
+
+
+    private final PqrsMensajeMapper pqrsMessageMapper;
+    private final PqrsMessageRepository pqrsMessageRepository;
+
+
+    // Constructor for constructor injection
     @Autowired
-    PqrsMensajeMapper pqrsMessageMapper;
+    public PqrsMessageServiceImpl(PqrsMessageRepository pqrsMessageRepository, PqrsMensajeMapper pqrsMessageMapper) {
+        this.pqrsMessageMapper = pqrsMessageMapper;
+        this.pqrsMessageRepository = pqrsMessageRepository;
+    }
+
+
+
 
 
     //Crear mensaje de una pqrs
