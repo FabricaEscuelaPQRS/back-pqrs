@@ -6,13 +6,13 @@ public enum Approved {
     INDEFINIDO("Indefinido");
 
 
-    public final String translate;
+    public final String value;
 
-    Approved(String translate) {
-        this.translate = translate;
+    Approved(String value) {
+        this.value = value;
     }
-    String translate() {
-        return this.translate;
+    public String getValue() {
+        return this.value;
     }
 
 

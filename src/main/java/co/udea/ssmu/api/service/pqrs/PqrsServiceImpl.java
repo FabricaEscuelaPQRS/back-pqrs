@@ -38,6 +38,7 @@ public class PqrsServiceImpl implements IPqrsService {
         // Convierte el DTO a entidad de la base de datos
         PqrsEntity pqrsE = pqrsMapper.toEntity(pqrs);
 
+
         // Guarda la entidad en la base de datos
         pqrsE = pqrsRepository.save(pqrsE);
 

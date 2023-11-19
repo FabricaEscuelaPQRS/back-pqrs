@@ -1,5 +1,5 @@
 package co.udea.ssmu.api.service.pqrs;
-import co.udea.ssmu.api.controller.PqrsController;
+
 import co.udea.ssmu.api.model.mapper.PqrsMapper;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -82,7 +82,6 @@ class PqrsServiceImplTest {
 
     @Test
     void createPqrs()  {
-
 
         when(pqrsRepository.save(any(PqrsEntity.class))).thenReturn(pqrsRequestEntity);
 

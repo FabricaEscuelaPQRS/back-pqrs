@@ -8,7 +8,7 @@ import co.udea.ssmu.api.model.entity.PqrsMensajeEntity;
 import co.udea.ssmu.api.model.mapper.PqrsMensajeMapper;
 import co.udea.ssmu.api.model.repository.PqrsMessageRepository;
 
-import co.udea.ssmu.api.service.pqrs.PqrsServiceImpl;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

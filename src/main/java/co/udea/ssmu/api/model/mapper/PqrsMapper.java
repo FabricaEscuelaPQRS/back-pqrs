@@ -42,17 +42,29 @@ public interface PqrsMapper {
 
     @Named("pqrsTypeToPqrsTypeString")
     default String pqrsTypeToPqrsTypeString(PqrsTypes pqrsType) {
-        return pqrsType.name();
+        if(pqrsType == null){
+            return null;
+        }
+
+        return pqrsType.getValue();
     }
 
     @Named("pqrsStateToPqrsStateString")
     default String pqrsStateToPqrsStateString(PqrsStates pqrsState) {
-        return pqrsState.name();
+        if(pqrsState == null){
+            return null;
+        }
+
+        return pqrsState.getValue();
     }
 
     @Named("approvedToApprovedString")
     default String approvedToApprovedString(Approved approved) {
-        return approved.name();
+
+        if(approved == null){
+            return null;
+        }
+        return approved.getValue();
     }
 
     @Named("complainTypeToComplainTypeString")
@@ -73,17 +85,75 @@ public interface PqrsMapper {
 
     @Named("pqrsTypeStringToPqrsType")
     default PqrsTypes pqrsTypeStringToPqrsType(String pqrsTypeString) {
-        return PqrsTypes.valueOf(pqrsTypeString);
+
+        if (pqrsTypeString == null) {
+            return null;
+        }
+        if (pqrsTypeString.equals("Queja")) {
+            return PqrsTypes.QUEJA;
+        }
+        if (pqrsTypeString.equals("Peticion")) {
+            return PqrsTypes.PETICION;
+        }
+
+        if (pqrsTypeString.equals("Reclamo")) {
+            return PqrsTypes.RECLAMO;
+        }
+        if(pqrsTypeString.equals("Sugerencia")) {
+            return PqrsTypes.SUGERENCIA;
+        }
+        if(pqrsTypeString.equals("Felicitacion")) {
+            return PqrsTypes.FELICITACION;
+        }
+
+        return null;
+
+
+
     }
 
     @Named("pqrsStateStringToPqrsState")
     default PqrsStates pqrsStateStringToPqrsState(String pqrsStateString) {
-        return PqrsStates.valueOf(pqrsStateString);
+
+
+        if (pqrsStateString == null) {
+            return null;
+        }
+        if (pqrsStateString.equals("Pendiente")) {
+            return PqrsStates.PENDIENTE;
+        }
+        if (pqrsStateString.equals("Proceso")) {
+            return PqrsStates.PROCESO;
+        }
+        if (pqrsStateString.equals("Finalizado")) {
+            return PqrsStates.FINALIZADO;
+        }
+
+
+        return null;
+
     }
 
     @Named("approvedStringToApproved")
     default Approved approvedStringToApproved(String approvedString) {
-        return Approved.valueOf(approvedString);
+
+
+
+        if (approvedString == null) {
+            return null;
+        }
+        if (approvedString.equals("Aprobado")) {
+            return Approved.APROBADO;
+        }
+        if (approvedString.equals("Rechazado")) {
+            return Approved.RECHAZADO;
+        }
+        if (approvedString.equals("Indefinido")) {
+            return Approved.INDEFINIDO;
+        }
+
+
+        return null;
     }
 
     @Named("complainStringToComplainType")

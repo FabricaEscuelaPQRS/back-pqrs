@@ -2,9 +2,9 @@ package co.udea.ssmu.api.service.user;
 
 import co.udea.ssmu.api.model.dto.Usuario;
 import co.udea.ssmu.api.model.entity.UsuarioEntity;
-import co.udea.ssmu.api.model.mapper.PqrsMensajeMapper;
+
 import co.udea.ssmu.api.model.mapper.UsuarioMapper;
-import co.udea.ssmu.api.model.repository.PqrsMessageRepository;
+
 import co.udea.ssmu.api.model.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
