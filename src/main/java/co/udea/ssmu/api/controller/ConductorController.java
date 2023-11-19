@@ -27,8 +27,8 @@ public class ConductorController {
     IConductorService conductorService;
 
     // Método para actualizar el estado de un conductor
-    @Operation(summary = "Actualizar estado conductor ")
-    @ApiResponses({
+    @Operation(summary = "Actualizar estado conductor ",
+    responses={
             // Cambiar el schema
             @ApiResponse(responseCode = "200", content = {
                     @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)

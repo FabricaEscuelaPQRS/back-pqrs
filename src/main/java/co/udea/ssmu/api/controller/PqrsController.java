@@ -29,8 +29,8 @@ public class PqrsController {
     IPqrsService pqrsService;
 
     // Método para crear una PQRS
-    @Operation(summary = "Guardar una pqrs")
-    @ApiResponses({
+    @Operation(summary = "Guardar una pqrs",
+    responses={
             @ApiResponse(responseCode = "200", content = {
                     @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
             }, description = "La petición se ha procesado correctamente"),
@@ -39,12 +39,13 @@ public class PqrsController {
     })
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping()
-
-    public ResponseEntity<Pqrs> createPqrs(@RequestBody @Nullable Pqrs pqrs){
+    @Nullable
+    public ResponseEntity<Pqrs> createPqrs(@RequestBody  Pqrs pqrs){
 
        Pqrs pqrsCreated= pqrsService.createPqrs(pqrs);
 
        if (pqrsCreated == null){
+
            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
        }
 
@@ -53,8 +54,8 @@ public class PqrsController {
 
 
     // Método para borrar una PQRS
-    @Operation(summary = "Borrar una pqrs")
-    @ApiResponses({
+    @Operation(summary = "Borrar una pqrs",
+    responses={
             // Cambiar el schema
             @ApiResponse(responseCode = "200", content = {
                     @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
@@ -63,8 +64,8 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @DeleteMapping("{id}")
-
-    public ResponseEntity<Pqrs> deletePqrs(@PathVariable("id") @Nullable  Integer id){
+    @Nullable
+    public ResponseEntity<Pqrs> deletePqrs(@PathVariable("id")   Integer id){
 
         Pqrs pqrsDeleted= pqrsService.deletePqrs(id);
 
@@ -77,8 +78,8 @@ public class PqrsController {
 
 
     // Método para listar todas las PQRS
-    @Operation(summary = "Listar pqrs")
-    @ApiResponses({
+    @Operation(summary = "Listar pqrs",
+    responses={
             // Cambiar el schema
             @ApiResponse(responseCode = "200", content = {
                     @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
@@ -94,8 +95,8 @@ public class PqrsController {
 
 
     // Método para obtener una PQRS por su ID
-    @Operation(summary = "Obtener pqrs por id")
-    @ApiResponses({
+    @Operation(summary = "Obtener pqrs por id",
+    responses={
             // Cambiar el schema
             @ApiResponse(responseCode = "200", content = {
                     @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
@@ -104,8 +105,8 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @GetMapping(path = "/{id}")
-
-    public ResponseEntity<Pqrs> getPqrsById(@PathVariable("id") @Nullable Integer id){
+    @Nullable
+    public ResponseEntity<Pqrs> getPqrsById(@PathVariable("id")  Integer id){
 
         Pqrs pqrsObtained= pqrsService.getPqrsById(id);
 
@@ -119,8 +120,8 @@ public class PqrsController {
 
 
     // Método para actualizar el estado de una PQR
-    @Operation(summary = "Actualizar estado pqrs ")
-    @ApiResponses({
+    @Operation(summary = "Actualizar estado pqrs ",
+    responses={
             // Cambiar el schema
             @ApiResponse(responseCode = "200", content = {
                     @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
@@ -137,8 +138,8 @@ public class PqrsController {
 
 
     // Método para listar PQRS por usuario
-    @Operation(summary = "Listar pqrs por usuario")
-    @ApiResponses({
+    @Operation(summary = "Listar pqrs por usuario",
+    responses={
             // Cambiar el schema
             @ApiResponse(responseCode = "200", content = {
                     @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
@@ -153,8 +154,8 @@ public class PqrsController {
     }
 
     // Método para listar PQRS por conductor
-    @Operation(summary = "Listar pqrs por conductor")
-    @ApiResponses({
+    @Operation(summary = "Listar pqrs por conductor",
+    responses={
             // Cambiar el schema
             @ApiResponse(responseCode = "200", content = {
                     @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
@@ -170,8 +171,8 @@ public class PqrsController {
 
 
     // Método para aprobar una PQRS
-    @Operation(summary = "Aprobar una pqrs")
-    @ApiResponses({
+    @Operation(summary = "Aprobar una pqrs",
+    responses= {
             //Cambiar el schema
             @ApiResponse(responseCode = "200", content = {
                     @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
@@ -180,8 +181,8 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @PutMapping(path = "/{id}/aprobar")
-
-    public ResponseEntity<Pqrs> aprobarPqrs(@PathVariable("id") @Nullable Integer id){
+    @Nullable
+    public ResponseEntity<Pqrs> aprobarPqrs(@PathVariable("id")  Integer id){
             Pqrs result = pqrsService.aprovarRechazarPqrs("APROBADO",id);
             if(result == null){
                 return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -191,8 +192,8 @@ public class PqrsController {
     }
 
     // Método para rechazar una PQRS
-    @Operation(summary = "Rechazar una pqrs")
-    @ApiResponses({
+    @Operation(summary = "Rechazar una pqrs",
+     responses= {
             //Cambiar el schema
             @ApiResponse(responseCode = "200", content = {
                     @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
@@ -201,8 +202,8 @@ public class PqrsController {
             @ApiResponse(responseCode = "400", description = "Error en la información")
     })
     @PutMapping(path = "/{id}/rechazar")
-
-    public ResponseEntity<Pqrs> rechazarPqrs(@PathVariable("id") @Nullable Integer id){
+    @Nullable
+    public ResponseEntity<Pqrs> rechazarPqrs(@PathVariable("id")  Integer id){
         Pqrs result = pqrsService.aprovarRechazarPqrs("Rechazado",id);
         if(result == null){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

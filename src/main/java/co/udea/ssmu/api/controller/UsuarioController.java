@@ -24,8 +24,8 @@ public class UsuarioController {
     IUserService userService;
 
     // Método para actualizar el estado de un usuario
-    @Operation(summary = "Actualizar estado usuario ")
-    @ApiResponses({
+    @Operation(summary = "Actualizar estado usuario ",
+    responses={
             // Cambiar el schema
             @ApiResponse(responseCode = "200", content = {
                     @Content(schema = @Schema(implementation = Pqrs.class), mediaType = MediaType.APPLICATION_JSON_VALUE)
