@@ -1,6 +1,6 @@
 package co.udea.ssmu.api.model.repository;
 
-import co.udea.ssmu.api.model.dto.Pqrs;
+
 import co.udea.ssmu.api.model.entity.PqrsEntity;
 import co.udea.ssmu.api.model.enums.*;
 import org.assertj.core.api.Assertions;
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
+
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 
 @DataJpaTest

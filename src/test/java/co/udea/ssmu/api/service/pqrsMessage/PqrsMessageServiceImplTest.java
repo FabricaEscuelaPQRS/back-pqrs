@@ -1,18 +1,13 @@
 package co.udea.ssmu.api.service.pqrsMessage;
 
-import co.udea.ssmu.api.model.dto.Archivo;
-import co.udea.ssmu.api.model.dto.Pqrs;
+
 import co.udea.ssmu.api.model.dto.PqrsMensaje;
-import co.udea.ssmu.api.model.entity.PqrsArchivoEntity;
-import co.udea.ssmu.api.model.entity.PqrsEntity;
+
 import co.udea.ssmu.api.model.entity.PqrsMensajeEntity;
-import co.udea.ssmu.api.model.enums.*;
-import co.udea.ssmu.api.model.mapper.ArchivoMapper;
-import co.udea.ssmu.api.model.mapper.PqrsMapper;
+
 import co.udea.ssmu.api.model.mapper.PqrsMensajeMapper;
 import co.udea.ssmu.api.model.repository.PqrsMessageRepository;
-import co.udea.ssmu.api.model.repository.PqrsRepository;
-import co.udea.ssmu.api.service.pqrs.PqrsServiceImpl;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,12 +15,9 @@ import org.mapstruct.factory.Mappers;
 import org.mockito.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
+
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;

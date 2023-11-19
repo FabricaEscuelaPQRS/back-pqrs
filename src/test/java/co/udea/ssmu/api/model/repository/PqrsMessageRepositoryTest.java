@@ -1,23 +1,20 @@
 package co.udea.ssmu.api.model.repository;
 
-import co.udea.ssmu.api.model.dto.PqrsMensaje;
-import co.udea.ssmu.api.model.entity.PqrsEntity;
+
 import co.udea.ssmu.api.model.entity.PqrsMensajeEntity;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
+
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
+
 
 import java.util.ArrayList;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 
 
@@ -69,8 +66,8 @@ class PqrsMessageRepositoryTest {
 
         ArrayList<PqrsMensajeEntity> pqrsMessageEntityList = pqrsMessageRepository.findAll();
 
-        Assertions.assertThat(pqrsMessageEntityList).isNotNull();
-        Assertions.assertThat(pqrsMessageEntityList).hasSize(1);
+        Assertions.assertThat(pqrsMessageEntityList).isNotNull()
+        .hasSize(1);
 
     }
 
