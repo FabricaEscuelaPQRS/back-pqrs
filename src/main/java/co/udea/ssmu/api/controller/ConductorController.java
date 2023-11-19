@@ -23,8 +23,16 @@ import org.springframework.web.bind.annotation.*;
 public class ConductorController {
 
 
+
+
+
+    private final IConductorService conductorService;
+
+    // Constructor for constructor injection
     @Autowired
-    IConductorService conductorService;
+    public ConductorController(IConductorService conductorService) {
+        this.conductorService = conductorService;
+    }
 
     // Método para actualizar el estado de un conductor
     @Operation(summary = "Actualizar estado conductor ",

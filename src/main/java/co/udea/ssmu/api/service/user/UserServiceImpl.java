@@ -2,7 +2,9 @@ package co.udea.ssmu.api.service.user;
 
 import co.udea.ssmu.api.model.dto.Usuario;
 import co.udea.ssmu.api.model.entity.UsuarioEntity;
+import co.udea.ssmu.api.model.mapper.PqrsMensajeMapper;
 import co.udea.ssmu.api.model.mapper.UsuarioMapper;
+import co.udea.ssmu.api.model.repository.PqrsMessageRepository;
 import co.udea.ssmu.api.model.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +14,18 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements IUserService{
 
-    @Autowired
-    UserRepository userRepository;
 
+    private final UserRepository userRepository;
+    private final UsuarioMapper usuarioMapper;
+
+
+    // Constructor for constructor injection
     @Autowired
-    UsuarioMapper usuarioMapper;
+    public UserServiceImpl(UsuarioMapper usuarioMapper, UserRepository userRepository) {
+        this.userRepository = userRepository;
+        this.usuarioMapper = usuarioMapper;
+    }
+
 
 
     //Actualizar el estado de un usuario

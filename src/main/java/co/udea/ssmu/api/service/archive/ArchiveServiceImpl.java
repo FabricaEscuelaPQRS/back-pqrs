@@ -5,6 +5,7 @@ import co.udea.ssmu.api.model.dto.Archivo;
 import co.udea.ssmu.api.model.entity.PqrsArchivoEntity;
 import co.udea.ssmu.api.model.mapper.ArchivoMapper;
 import co.udea.ssmu.api.model.repository.ArchivoRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
@@ -17,11 +18,19 @@ public class ArchiveServiceImpl implements IArchiveService {
 
 
 
-    @Autowired
-    ArchivoRepository archivoRepository;
 
+
+    private final ArchivoMapper archivoMapper;
+    private final ArchivoRepository archivoRepository;
+
+
+    // Constructor for constructor injection
     @Autowired
-    ArchivoMapper archivoMapper;
+    public ArchiveServiceImpl(ArchivoMapper archivoMapper, ArchivoRepository archivoRepository) {
+        this.archivoMapper = archivoMapper;
+        this.archivoRepository = archivoRepository;
+    }
+
 
 
     //Crear un archivo
