@@ -28,6 +28,7 @@ public class ConductorEntity {
     @Column(name = "CELULAR", length = 50)
     private String celular;
 
+    
     @Size(max = 50)
     @Column(name = "EMAIL", length = 50)
     private String email;
